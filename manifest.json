@@ -41,7 +41,8 @@
    "version": "1.0.0",
    "web_accessible_resources": [{
       "resources":["assets/images/64.png", "assets/images/welcome.png",
-      "assets/css/static.css","assets/images/delete_icon.png"],
+      "assets/css/static.css","assets/images/delete_icon.png","script.js"],
+      "matches": ["<all_urls>"],
       "extension_ids": ["nedjfnpfbadpbnbajlidamklhdfdaooi"]
    }]
 }

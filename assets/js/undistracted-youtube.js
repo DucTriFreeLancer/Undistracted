@@ -24,40 +24,15 @@ function runContentScript() {
     ({ youtubeSettings, generalSettings }) => {
       const fromTime = generalSettings.disableDuringHours.value.fromTime;
       const toTime = generalSettings.disableDuringHours.value.toTime;
-      var scriptOnMutation = `
-        (function addMutationObserver() {
-          document.addEventListener('DOMContentLoaded', () => {
-            var body = document.querySelector('body');
-            if (!body) {
-              return;
-            }
-        
-            const assignClass = body => {
-              var isHomePage = !!!window.location.pathname.split('/')[1];
-              if (body) {
-                if (isHomePage) {
-                  body.classList.add('isHomePage');
-                } else {
-                  body.classList.remove('isHomePage');
-                }
-              }
-            };
-        
-            assignClass(body);
-        
-            var title = document.querySelector('title');
-            if (title) {
-              title.addEventListener('DOMSubtreeModified', () => assignClass(body));
-            }
-          });
-        })();      
-      `;
-
+      
       if (!document.getElementById('undistracted-script')) {
         var script = document.createElement('script');
         script.setAttribute('id', 'undistracted-script');
-        script.textContent = scriptOnMutation;
-        document.head.appendChild(script);
+        script.src = chrome.runtime.getURL('script.js');
+        script.onload = function() {
+            this.remove();
+        };
+        (document.head || document.documentElement).appendChild(script);
       }
 
       // Remove existing and add new

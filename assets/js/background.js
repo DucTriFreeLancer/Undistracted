@@ -389,14 +389,14 @@ const allSettings = {
 };
 
 function setLaunchPages(reason, previousVersion = '') {
-  chrome.runtime.setUninstallURL('https://undistracted.typeform.com/to/yx84Z6');
-  if (reason === 'install') {
-    chrome.tabs.create({ url: 'https://www.undistracted.app/installed' });
-  } else if (reason === 'update') {
-    if (chrome.runtime.getManifest().version === '1.6') {
-      chrome.tabs.create({ url: 'https://www.undistracted.app/updated' });
-    }
-  }
+  // chrome.runtime.setUninstallURL('https://undistracted.typeform.com/to/yx84Z6');
+  // if (reason === 'install') {
+  //   chrome.tabs.create({ url: 'https://www.undistracted.app/installed' });
+  // } else if (reason === 'update') {
+  //   if (chrome.runtime.getManifest().version === '1.6') {
+  //     chrome.tabs.create({ url: 'https://www.undistracted.app/updated' });
+  //   }
+  // }
 }
 
 function loadStorageToLocal(cbOnLoad) {
