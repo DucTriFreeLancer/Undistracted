@@ -402,13 +402,14 @@ function setLaunchPages(reason, previousVersion = '') {
 function loadStorageToLocal(cbOnLoad) {
   chrome.storage.sync.get(
     [
-      'twitterSettings',
       'youtubeSettings',
       'facebookSettings',
+      'instagramSettings',
+      'tiktokSettings',
       'redditSettings',
+      'twitterSettings',
       'netflixSettings',
-      'linkedinSettings',
-      'generalSettings',
+      'generalSettings'
     ],
     (storageData) => {
       if (storageData.twitterSettings) {
