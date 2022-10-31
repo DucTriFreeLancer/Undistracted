@@ -16,6 +16,10 @@
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-youtube.js","/assets/js/script.js"],
       "matches": [ "*://*.youtube.com/*"  ]
+   },
+   {
+      "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-tiktok.js"],
+      "matches": [ "*://*.tiktok.com/*"  ]
    }],
    "description": "Allow users to toggle CSS elements of popular websites on and off to eliminate distractions while they work",
    "icons": {

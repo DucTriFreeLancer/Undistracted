@@ -221,7 +221,6 @@ const allSettings = {
       tooltip: 'Hide Notifications',
       order: 7,
       type: 'switch',
-      enabled: false,
       color:"dark"
     },
     account: {
@@ -230,7 +229,6 @@ const allSettings = {
       tooltip: 'Hide Account',
       order: 8,
       type: 'switch',
-      enabled: false,
       color:"dark"
     }
   },
