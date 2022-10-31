@@ -14,7 +14,7 @@
       "matches": [ "*://*.facebook.com/*" ]
    }, 
    {
-      "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-youtube.js"],
+      "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-youtube.js","/assets/js/script.js"],
       "matches": [ "*://*.youtube.com/*"  ]
    }],
    "description": "Allow users to toggle CSS elements of popular websites on and off to eliminate distractions while they work",
@@ -42,7 +42,6 @@
    "web_accessible_resources": [{
       "resources":["assets/images/64.png", "assets/images/welcome.png",
       "assets/css/static.css","assets/images/delete_icon.png","script.js"],
-      "matches": ["<all_urls>"],
-      "extension_ids": ["nedjfnpfbadpbnbajlidamklhdfdaooi"]
+      "matches": ["<all_urls>"]
    }]
 }

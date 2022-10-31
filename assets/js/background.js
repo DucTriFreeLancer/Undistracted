@@ -5,6 +5,8 @@ var myTimer;
 const relatedDomains = {
   facebook: ['facebook.com', 'fb.com'],
   youtube: ['youtube.com', 'youtu.be'],
+  tiktok: ['tiktok.com'],
+  instagram: ['instagram.com'],
   twitter: [
     'twitter.com',
     'twimg.com',
@@ -26,6 +28,7 @@ const allSettings = {
       order: 0,
       type: 'switch',
       customClass: 'red-setting',
+      color:"primary"
     },
     feed: {
       value: false,
@@ -33,6 +36,8 @@ const allSettings = {
       tooltip: 'Hides your news feed',
       order: 1,
       type: 'switch',
+      color:"primary"
+
     },
     likesComments: {
       value: false,
@@ -40,6 +45,7 @@ const allSettings = {
       tooltip: 'Hides Likes and Comments section from all posts',
       order: 2,
       type: 'switch',
+      color:"primary"
     },
     chatSidebar: {
       value: false,
@@ -47,6 +53,7 @@ const allSettings = {
       tooltip: 'Hides Chat sidebar on the right side',
       order: 3,
       type: 'switch',
+      color:"primary"
     },
     watchFeed: {
       value: false,
@@ -54,6 +61,7 @@ const allSettings = {
       tooltip: 'Hides Watch button and Feed',
       order: 4,
       type: 'switch',
+      color:"primary"
     },
     marketplace: {
       value: false,
@@ -61,6 +69,7 @@ const allSettings = {
       tooltip: 'Hides Marketplace shortcut and blocks access',
       order: 5,
       type: 'switch',
+      color:"primary"
     },
     stories: {
       value: false,
@@ -68,6 +77,7 @@ const allSettings = {
       tooltip: 'Hides Stories panel from homepage',
       order: 6,
       type: 'switch',
+      color:"primary"
     },
     color: {
       value: false,
@@ -76,6 +86,7 @@ const allSettings = {
       order: 7,
       type: 'switch',
       enabled: false,
+      color:"primary"
     },
   },
   youtubeSettings: {
@@ -86,6 +97,7 @@ const allSettings = {
       order: 0,
       type: 'switch',
       customClass: 'red-setting',
+      color:"danger"
     },
     recommendations: {
       value: false,
@@ -93,6 +105,7 @@ const allSettings = {
       tooltip: "Hides all videos recommended by YouTube's algorithm",
       order: 1,
       type: 'switch',
+      color:"danger"
     },
     redirectToSubscriptions: {
       value: false,
@@ -100,6 +113,7 @@ const allSettings = {
       tooltip: "Always redirect YouTube's homepage to my subscriptions feed",
       order: 2,
       type: 'switch',
+      color:"danger"
     },
     breakingNews: {
       value: false,
@@ -107,6 +121,7 @@ const allSettings = {
       tooltip: 'Hides breaking news and other recommended sections',
       order: 3,
       type: 'switch',
+      color:"danger"
     },
     sidebar: {
       value: false,
@@ -114,6 +129,7 @@ const allSettings = {
       tooltip: 'Hides sidebar with shortcuts to other YouTube pages',
       order: 4,
       type: 'switch',
+      color:"danger"
     },
     comments: {
       value: false,
@@ -121,6 +137,7 @@ const allSettings = {
       tooltip: 'Hides comments section from videos',
       order: 5,
       type: 'switch',
+      color:"danger"
     },
     thumbnail: {
       value: 0,
@@ -128,6 +145,7 @@ const allSettings = {
       tooltip: 'Blurs/Hides Video Thumbnail',
       order: 6,
       type: 'switch-multi',
+      color:"danger"
     },
     upNext: {
       value: false,
@@ -135,7 +153,145 @@ const allSettings = {
       tooltip: 'Hide suggested videos after and during the video',
       order: 7,
       type: 'switch',
+      color:"danger"
     },
+  },
+  tiktokSettings: {
+    blockSite: {
+      value: false,
+      description: 'Block Tiktok',
+      tooltip: 'Block all access to Tiktok domain',
+      order: 0,
+      type: 'switch',
+      customClass: 'red-setting',
+      color:"dark"
+    },
+    feed: {
+      value: false,
+      description: 'Hide Feed',
+      tooltip: 'Hides your news feed',
+      order: 1,
+      type: 'switch',
+      color:"dark"
+
+    },
+    suggestedAccount: {
+      value: false,
+      description: 'Hide Suggested Accounts',
+      tooltip: 'Hide Suggested Accounts',
+      order: 2,
+      type: 'switch',
+      color:"dark"
+    },
+    followingAccount: {
+      value: false,
+      description: 'Hide Following Accounts',
+      tooltip: 'Hide Following Accounts',
+      order: 3,
+      type: 'switch',
+      color:"dark"
+    },
+    navigation: {
+      value: false,
+      description: 'Hide Navigation',
+      tooltip: 'Hides Navigation',
+      order: 4,
+      type: 'switch',
+      color:"dark"
+    },
+    search: {
+      value: false,
+      description: 'Hide Search',
+      tooltip: 'Hides Search',
+      order: 5,
+      type: 'switch',
+      color:"dark"
+    },
+    directMessage: {
+      value: false,
+      description: 'Hide Direct Messages',
+      tooltip: 'Hides Direct Messages',
+      order: 6,
+      type: 'switch',
+      color:"dark"
+    },
+    notifications: {
+      value: false,
+      description: 'Hide Notifications',
+      tooltip: 'Hide Notifications',
+      order: 7,
+      type: 'switch',
+      enabled: false,
+      color:"dark"
+    },
+    account: {
+      value: false,
+      description: 'Hide Account',
+      tooltip: 'Hide Account',
+      order: 8,
+      type: 'switch',
+      enabled: false,
+      color:"dark"
+    }
+  },
+  instagramSettings: {
+    blockSite: {
+      value: false,
+      description: 'Block Instagram',
+      tooltip: 'Block all access to Instagram domain',
+      order: 0,
+      type: 'switch',
+      customClass: 'red-setting',
+      color:"warning"
+    },
+    feed: {
+      value: false,
+      description: 'Hide Feed',
+      tooltip: 'Hides your news feed',
+      order: 1,
+      type: 'switch',
+      color:"warning"
+    },
+    suggestedAccount: {
+      value: false,
+      description: 'Hide Suggested Accounts',
+      tooltip: 'Hide Suggested Accounts',
+      order: 2,
+      type: 'switch',
+      color:"warning"
+    },
+    stories: {
+      value: false,
+      description: 'Hide Stories',
+      tooltip: 'Hide Stories',
+      order: 3,
+      type: 'switch',
+      color:"warning"
+    },
+    sidebar: {
+      value: false,
+      description: 'Hide Sidebar',
+      tooltip: 'Hides Sidebar',
+      order: 4,
+      type: 'switch',
+      color:"warning"
+    },
+    account: {
+      value: false,
+      description: 'Hide Account',
+      tooltip: 'Hides Account',
+      order: 5,
+      type: 'switch',
+      color:"warning"
+    },
+    more: {
+      value: false,
+      description: 'Hide More',
+      tooltip: 'Hides more',
+      order: 6,
+      type: 'switch',
+      color:"warning"
+    }
   },
   twitterSettings: {
     blockSite: {
@@ -145,6 +301,8 @@ const allSettings = {
       order: 0,
       type: 'switch',
       customClass: 'red-setting',
+      color:"primary"
+
     },
     timeline: {
       value: false,
@@ -152,6 +310,8 @@ const allSettings = {
       tooltip: 'Hides homepage feed',
       order: 1,
       type: 'switch',
+      color:"primary"
+
     },
     trends: {
       value: false,
@@ -159,6 +319,8 @@ const allSettings = {
       tooltip: 'Hides Trends section from your feed',
       order: 2,
       type: 'switch',
+      color:"primary"
+
     },
     whoToFollow: {
       value: false,
@@ -166,6 +328,8 @@ const allSettings = {
       tooltip: 'Hides Who to follow section',
       order: 3,
       type: 'switch',
+      color:"primary"
+
     },
     topics: {
       value: false,
@@ -173,6 +337,8 @@ const allSettings = {
       tooltip: 'Hides Topics to follow section',
       order: 4,
       type: 'switch',
+      color:"primary"
+
     },
     media: {
       value: false,
@@ -180,6 +346,8 @@ const allSettings = {
       tooltip: 'Hides all Videos and Images from your feed',
       order: 5,
       type: 'switch',
+      color:"primary"
+
     },
     color: {
       value: false,
@@ -188,6 +356,8 @@ const allSettings = {
       order: 6,
       type: 'switch',
       enabled: false, // Performance Issues
+      color:"primary"
+
     },
   },
   redditSettings: {
@@ -198,6 +368,8 @@ const allSettings = {
       order: 0,
       type: 'switch',
       customClass: 'red-setting',
+      color:"danger"
+
     },
     hideComments: {
       value: false,
@@ -205,6 +377,8 @@ const allSettings = {
       tooltip: 'Hides comments and discussion threads from all posts',
       order: 1,
       type: 'switch',
+      color:"danger"
+
       // enabled: false
     },
     hideFrontPageFeed: {
@@ -213,6 +387,8 @@ const allSettings = {
       tooltip: 'Hides posts from your reddit front page',
       order: 2,
       type: 'switch',
+      color:"danger"
+
       // enabled: false
     },
     popular: {
@@ -221,6 +397,8 @@ const allSettings = {
       tooltip: 'Blocks access to r/popular page and hides shortcuts to it',
       type: 'switch',
       order: 3,
+      color:"danger"
+
     },
     all: {
       value: false,
@@ -228,6 +406,8 @@ const allSettings = {
       tooltip: 'Blocks access to r/all page and hides shortcuts to it',
       type: 'switch',
       order: 4,
+      color:"danger"
+
     },
   },
   netflixSettings: {
@@ -238,6 +418,8 @@ const allSettings = {
       order: 0,
       type: 'switch',
       customClass: 'red-setting',
+      color:"danger"
+
     },
     hideAllShowMyAndContinue: {
       value: false,
@@ -245,6 +427,8 @@ const allSettings = {
       tooltip: 'Hides everything except "Continue Watching" and "My List"',
       order: 1,
       type: 'switch',
+      color:"danger"
+
     },
     hideContinueWatching: {
       value: false,
@@ -252,6 +436,8 @@ const allSettings = {
       tooltip: 'Hides "Continue Watching" queue section',
       type: 'switch',
       order: 2,
+      color:"danger"
+
     },
     hideMyList: {
       value: false,
@@ -259,44 +445,8 @@ const allSettings = {
       tooltip: 'Hides "My List" section',
       type: 'switch',
       order: 3,
-    },
-  },
-  linkedinSettings: {
-    blockSite: {
-      value: false,
-      description: 'Block LinkedIn',
-      tooltip: 'Block all access to LinkedIn domain',
-      order: 0,
-      type: 'switch',
-      customClass: 'red-setting',
-    },
-    feed: {
-      value: false,
-      description: 'Hide Feed',
-      tooltip: 'Hides Feed from your homepage',
-      order: 1,
-      type: 'switch',
-    },
-    messaging: {
-      value: false,
-      description: 'Hide Messaging popup',
-      tooltip: 'Hides Messaging popup on the bottom right of the page',
-      order: 2,
-      type: 'switch',
-    },
-    news: {
-      value: false,
-      description: 'Hide LinkedIn News',
-      tooltip: 'Hides LinkedIn News section',
-      order: 3,
-      type: 'switch',
-    },
-    likesComments: {
-      value: false,
-      description: 'Hide Likes and Comments',
-      tooltip: 'Hides Likes and Comments section from all posts',
-      order: 4,
-      type: 'switch',
+      color:"danger"
+
     },
   },
   generalSettings: {
@@ -307,6 +457,7 @@ const allSettings = {
         'Disables all filters temporarily. Your filter settings will remain intact',
       type: 'switch',
       order: 1,
+      color:"primary"
     },
     disableFiltersTemporary: {
       value: { active: false, endTimestamp: '' },
@@ -315,6 +466,8 @@ const allSettings = {
         'Pauses all filters for 5 minutes and then resumes automatically',
       type: 'switch-with-meta',
       order: 2,
+      color:"primary"
+
     },
     disableDuringHours: {
       value: { active: false, fromTime: '', toTime: '' },
@@ -322,6 +475,8 @@ const allSettings = {
       tooltip: '',
       type: 'switch-with-time-period',
       order: 3,
+      color:"primary"
+
     },
     customSitesToBlock: {
       value: { active: false, customURLList: [] },
@@ -329,6 +484,8 @@ const allSettings = {
       tooltip: '',
       type: 'text-list',
       order: 4,
+      color:"primary"
+
     },
     customRedirectURL: {
       value: 'www.google.com',
@@ -337,6 +494,8 @@ const allSettings = {
         'Enter link to a site where you wants to be redirected to if blocked',
       type: 'text',
       order: 5,
+      color:"primary"
+
     },
     hideTooltip: {
       value: false,
@@ -344,47 +503,9 @@ const allSettings = {
       tooltip: 'Hide all tooltips shown while hovering on filters',
       type: 'switch',
       order: 6,
-    },
-    communicateToDev: {
-      tooltip: 'Help the developer improve this extension',
-      buttonList: [
-        {
-          title: 'Leave rating',
-          action: 'redirect',
-          icon: 'star',
-          iconColor: '#01b1f1',
-          to:
-            'https://chrome.google.com/webstore/detail/undistracted/pjjgklgkfeoeiebjogplpnibpfnffkng/reviews',
-        },
-        {
-          title: 'Request Feature',
-          action: 'mail',
-          icon: 'plus-circle',
-          iconColor: '#52c41a',
-          to:
-            'undistracted.developer+feature@gmail.com?subject=Feature Request&body=Feature description: ',
-        },
-        {
-          title: 'Report bug',
-          action: 'mail',
-          icon: 'tool',
-          iconColor: '#eb2f96',
-          to:
-            'undistracted.developer+bug@gmail.com?subject=Bug Report&body=Operating System [Windows, Linux, Mac OS, Chrome OS]: %0D%0ABug Description: %0D%0AScreenshot (if applicable): ',
-        },
-      ],
-      type: 'button-list',
-      order: 7,
-    },
-    donate: {
-      value: false,
-      description: '',
-      tooltip: 'Support the development',
-      type: 'image',
-      link:
-        '<style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 15px 7px 10px !important;line-height: 35px !important;height:51px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#5F7FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 15px 7px 10px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:\'Cookie\', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/betterself"><img src="https://res.cloudinary.com/dxmi9d3vj/image/upload/v1594642510/book_dfhgvh.svg" alt="Buy me a book"><span style="margin-left:5px;font-size:28px !important;">Buy me a book</span></a>',
-      order: 8,
-    },
+      color:"primary"
+
+    }
   },
 };
 
@@ -442,10 +563,16 @@ function loadStorageToLocal(cbOnLoad) {
             storageData.netflixSettings[filterKey].value;
         });
       }
-      if (storageData.linkedinSettings) {
-        Object.keys(storageData.linkedinSettings).forEach((filterKey) => {
-          allSettings.linkedinSettings[filterKey].value =
-            storageData.linkedinSettings[filterKey].value;
+      if (storageData.tiktokSettings) {
+        Object.keys(storageData.tiktokSettings).forEach((filterKey) => {
+          allSettings.tiktokSettings[filterKey].value =
+            storageData.tiktokSettings[filterKey].value;
+        });
+      }
+      if (storageData.instagramSettings) {
+        Object.keys(storageData.instagramSettings).forEach((filterKey) => {
+          allSettings.instagramSettings[filterKey].value =
+            storageData.instagramSettings[filterKey].value;
         });
       }
       if (storageData.generalSettings) {
@@ -551,7 +678,8 @@ chrome.runtime.onInstalled.addListener((details) => {
       facebookSettings: allSettings.facebookSettings,
       redditSettings: allSettings.redditSettings,
       netflixSettings: allSettings.netflixSettings,
-      linkedinSettings: allSettings.linkedinSettings,
+      tiktokSettings: allSettings.tiktokSettings,
+      instagramSettings: allSettings.instagramSettings,
       generalSettings: allSettings.generalSettings,
     });
   });
@@ -601,7 +729,8 @@ chrome.webNavigation.onBeforeNavigate.addListener(({ frameId, tabId, url }) => {
       facebookSettings,
       redditSettings,
       netflixSettings,
-      linkedinSettings,
+      tiktokSettings,
+      instagramSettings,
       generalSettings,
     } = allSettings;
     const urlDomain = rootDomain(url);
@@ -672,6 +801,30 @@ chrome.webNavigation.onBeforeNavigate.addListener(({ frameId, tabId, url }) => {
         ['https://www.youtube.com/feed/subscriptions']
       );
     } else if (
+      tiktokSettings.blockSite.value &&
+      relatedDomains.tiktok.some((i) => urlDomain.includes(i)) &&
+      !url.includes('music.') &&
+      !url.includes('studio.')
+    ) {
+      safeRedirectOnBlock(
+        tabId,
+        redirectUrl,
+        fallbackUrl,
+        relatedDomains.tiktok
+      );
+    } else if (
+      instagramSettings.blockSite.value &&
+      relatedDomains.instagram.some((i) => urlDomain.includes(i)) &&
+      !url.includes('music.') &&
+      !url.includes('studio.')
+    ) {
+      safeRedirectOnBlock(
+        tabId,
+        redirectUrl,
+        fallbackUrl,
+        relatedDomains.instagram
+      );
+    } else if (
       twitterSettings.blockSite.value &&
       relatedDomains.twitter.some((i) => urlDomain.includes(i))
     ) {
@@ -700,16 +853,6 @@ chrome.webNavigation.onBeforeNavigate.addListener(({ frameId, tabId, url }) => {
         redirectUrl,
         fallbackUrl,
         relatedDomains.netflix
-      );
-    } else if (
-      linkedinSettings.blockSite.value &&
-      relatedDomains.linkedin.some((i) => urlDomain.includes(i))
-    ) {
-      safeRedirectOnBlock(
-        tabId,
-        redirectUrl,
-        fallbackUrl,
-        relatedDomains.linkedin
       );
     } else if (generalSettings.customSitesToBlock.value.active) {
       const customURLListDomains = generalSettings.customSitesToBlock.value.customURLList.map(
@@ -762,32 +905,3 @@ chrome.webNavigation.onBeforeNavigate.addListener(({ frameId, tabId, url }) => {
     }
   }
 });
-
-function googleAnalytics() {
-  // Standard Google Universal Analytics code
-  (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    (i[r] =
-      i[r] ||
-      function() {
-        (i[r].q = i[r].q || []).push(arguments);
-      }),
-      (i[r].l = 1 * new Date());
-    (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m);
-  })(
-    window,
-    document,
-    'script',
-    'https://www.google-analytics.com/analytics.js',
-    'ga'
-  ); // Note: https protocol here
-
-  ga('create', 'UA-131792384-1', 'auto');
-  ga('set', 'checkProtocolTask', function() {});
-  ga('set', 'dimension1', `${chrome.runtime.getManifest().version}`);
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview', 'background.js');
-}

@@ -2,6 +2,8 @@ const state = {
     twitterSettings: {},
     youtubeSettings: {},
     facebookSettings: {},
+	tiktokSettings:{},
+	instagramSettings:{},
     redditSettings: {},
     netflixSettings: {},
     linkedinSettings: {},
@@ -15,9 +17,10 @@ $(document).ready(function() {
 			'twitterSettings',
 			'youtubeSettings',
 			'facebookSettings',
+			'instagramSettings',
+			'tiktokSettings',
 			'redditSettings',
 			'netflixSettings',
-			'linkedinSettings',
 			'generalSettings',
 		  ],
 		  ({
@@ -26,13 +29,26 @@ $(document).ready(function() {
 			facebookSettings = {},
 			redditSettings = {},
 			netflixSettings = {},
-			linkedinSettings = {},
 			generalSettings = {},
+			tiktokSettings = {},
+			instagramSettings ={}
 		  }) => {
 			state.facebookSettings = facebookSettings;
 			SetToggleElement("#ulfacebook","facebookSettings", state.facebookSettings);
 			state.youtubeSettings = youtubeSettings;
 			SetToggleElement("#ulyoutube", "youtubeSettings",state.youtubeSettings );
+			state.tiktokSettings = tiktokSettings;
+			SetToggleElement("#ultiktok", "tiktokSettings",state.tiktokSettings );
+			state.instagramSettings = instagramSettings;
+			SetToggleElement("#ulinstagram", "instagramSettings",state.instagramSettings );
+			state.twitterSettings = twitterSettings;
+			SetToggleElement("#ultwitter", "twitterSettings",state.twitterSettings );
+			state.redditSettings = redditSettings;
+			SetToggleElement("#ulreddit", "redditSettings",state.redditSettings );
+			state.netflixSettings = netflixSettings;
+			SetToggleElement("#ulnetflix", "netflixSettings",state.netflixSettings );
+			state.generalSettings = generalSettings;
+			SetToggleElement("#ulsetting", "generalSettings",state.generalSettings );
 
 			$("#ssa_tab").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
 			$("#ssa_tab li").removeClass('ui-corner-top').addClass('ui-corner-left');
@@ -70,7 +86,8 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 					elehtml +=`
 					<li class="ant-list-item filterListItem ` + settingsEle[filterKey].customClass+`">
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
-						<input type="checkbox" id="`+filterKey+`" `+ (settingsEle[filterKey].value?"checked":"") +` data-toggle="toggle" data-size="sm">
+						<input type="checkbox" class id="`+filterKey+`" `+ (settingsEle[filterKey].value?"checked":"") +` 
+							data-onstyle="`+ settingsEle[filterKey].color +`" data-toggle="toggle" data-size="sm">
 					</li>`
 				}
 				else if(settingsEle[filterKey].type==="switch-multi"){
@@ -78,13 +95,13 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 					<li class="ant-list-item filterListItem ` + settingsEle[filterKey].customClass+`">
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="shadow-none btn btn-outline-success btn-sm `+(settingsEle[filterKey].value==="0"?"active":"")+`">
+							<label class="shadow-none btn btn-outline-`+ settingsEle[filterKey].color +` btn-sm `+(settingsEle[filterKey].value==="0"?"active":"")+`">
 								<input type="radio" name="`+filterKey+`" id="`+filterKey+`0"  autocomplete="off"> Show
 							</label>
-							<label class="shadow-none btn btn-outline-success btn-sm `+(settingsEle[filterKey].value==="1"?"active":"")+`">
+							<label class="shadow-none btn btn-outline-`+ settingsEle[filterKey].color +` btn-sm `+(settingsEle[filterKey].value==="1"?"active":"")+`">
 								<input type="radio" name="`+filterKey+`" id="`+filterKey+`1"  autocomplete="off"> Blur
 							</label>
-							<label class="shadow-none btn btn-outline-success btn-sm `+(settingsEle[filterKey].value==="2"?"active":"")+`">
+							<label class="shadow-none btn btn-outline-`+ settingsEle[filterKey].color +` btn-sm `+(settingsEle[filterKey].value==="2"?"active":"")+`">
 								<input type="radio" name="`+filterKey+`" id="`+filterKey+`2" autocomplete="off"> Hide
 							</label>
 						</div>
