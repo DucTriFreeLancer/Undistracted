@@ -44,7 +44,10 @@ function runContentScript() {
       // Hide Feed
       if (facebookSettings.feed.value) {
         css += `
-      .home .newsFeedComposer #contentArea, #m_newsfeed_stream, #MComposer, #MStoriesTray, [role="main"]:not([aria-label="Search Results"]) div:not([data-pagelet="GroupFeed"])>[role="feed"], [data-pagelet="Stories"] {
+      .home .newsFeedComposer #contentArea, #m_newsfeed_stream, #MComposer, #MStoriesTray, [role="main"]:not([aria-label="Search Results"]):not([aria-label="Search results"]) div:not([data-pagelet="GroupFeed"])>[role="feed"], [data-pagelet="Stories"] {
+        display: none !important;
+      }
+      [role="main"]:not([aria-label="Search results"]) [role="article"]{
         display: none !important;
       }
       [aria-label="List of Groups"] ~ div [role="main"] [role="feed"][role="feed"][role="feed"], div [data-pagelet="GroupFeed"] [role="feed"] {

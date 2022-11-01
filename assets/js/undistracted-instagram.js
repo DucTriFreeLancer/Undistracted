@@ -20,8 +20,8 @@ function runContentScript() {
       .padStart(2, '0');
 
   chrome.storage.sync.get(
-    ['tiktokSettings', 'generalSettings'],
-    ({ tiktokSettings, generalSettings }) => {
+    ['instagramSettings', 'generalSettings'],
+    ({ instagramSettings, generalSettings }) => {
       const fromTime = generalSettings.disableDuringHours.value.fromTime;
       const toTime = generalSettings.disableDuringHours.value.toTime;
       // Remove existing and add new
@@ -42,79 +42,59 @@ function runContentScript() {
         return;
       }
       // Hide Feed
-      if (tiktokSettings.feed.value) {
+      if (instagramSettings.feed.value) {
         css += `
-        div[class*='-DivBodyContainer'] div[class^='tiktok-'][class*='-DivMainContainer'] div[data-e2e="recommend-list-item-container"] {
+        article._ab6k{
             display: none !important;
         }
       `;
       }
       // Hide Suggested accounts
-      if (tiktokSettings.suggestedAccount.value) {
+      if (instagramSettings.suggestedAccount.value) {
         css += `
-        div[class^='tiktok-'][class*='-DivUserContainer']:has(p[data-e2e="suggest-accounts"])  {
+        div[class='_aak6 _aak9'] div[class='_aak3'] {
+            display: none !important;
+        }
+        div[class='_aak6 _aak9'] div[class=' _ab8b'] {
             display: none !important;
         }
       `;
       }
 
-      // Hide stories
-      if (tiktokSettings.stories.value) {
+      // Hide Stories
+      if (instagramSettings.stories.value) {
         css += `
-        div[class^='tiktok-'][class*='-DivUserContainer']:has(p[data-e2e="following-accounts"])  {
+        div[class='_aac4 _aac5 _aac6'] {
             display: none !important;
         }
       `;
       }
 
-      // Hide navigation
-      if (tiktokSettings.navigation.value) {
+      // Hide Sidebar
+      if (instagramSettings.sidebar.value) {
         css += `
-        div[class*='-DivHeaderWrapperMain'] a[data-e2e="tiktok-logo"] {
-            display: none !important;
-        }
-        div[class*='-DivWrapper'] div[class^='tiktok-'][class*='-DivMainNavContainer']  {
+        nav[class='_acbh _acbi'] {
             display: none !important;
         }
       `;
       }
 
-      // Hide search
-      if (tiktokSettings.search.value) {
+      // Hide Account
+      if (instagramSettings.account.value) {
         css += `
-        div[class*='-DivHeaderCenterContainer'] div[class^='tiktok-'][class*='-DivSearchFormContainer'] {
-            display: none !important;
-        }
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivUploadContainer'] {
+        div[class='_aak6 _aak9'] div[class='_aakb _aakc'] {
             display: none !important;
         }
             `;
       }
 
-      // Hide Direct Messages
-      if (tiktokSettings.directMessage.value) {
+      // Hide More
+      if (instagramSettings.more.value) {
         css += `
         div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivMessageIconContainer'] {
             display: none !important;
         }
             `;
-      }
-
-      // Remove notifications
-      if (tiktokSettings.notifications.value) {
-        css += `
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivHeaderInboxContainer'] {
-            display: none !important;
-        }
-      `;
-      }
-      // Remove account
-      if (tiktokSettings.account.value) {
-        css += `
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivProfileContainer'] {
-            display: none !important;
-        }
-      `;
       }
 
       var style = document.createElement('style');
