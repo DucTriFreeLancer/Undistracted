@@ -58,8 +58,8 @@ function runContentScript() {
       `;
       }
 
-      // Hide stories
-      if (tiktokSettings.stories.value) {
+      // Hide following Account
+      if (tiktokSettings.followingAccount.value) {
         css += `
         div[class^='tiktok-'][class*='-DivUserContainer']:has(p[data-e2e="following-accounts"])  {
             display: none !important;

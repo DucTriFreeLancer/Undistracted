@@ -58,13 +58,16 @@ function runContentScript() {
         div[class='_aak6 _aak9'] div[class=' _ab8b'] {
             display: none !important;
         }
+        div[class=' _ab6k _ab6m  _aa1x _ackf _ackh'] {
+          display: none !important;
+      }
       `;
       }
 
       // Hide Stories
       if (instagramSettings.stories.value) {
         css += `
-        div[class='_aac4 _aac5 _aac6'] {
+        div[class='_aac4 _aac5 _aac6'],div[class='x7wzq59 x1dr59a3 x13vifvy'] {
             display: none !important;
         }
       `;
@@ -75,6 +78,9 @@ function runContentScript() {
         css += `
         nav[class='_acbh _acbi'] {
             display: none !important;
+        }
+        div[class='xh8yej3 x1to3lk4 x1n2onr6 x2lah0s'],div[class='x1iyjqo2 xh8yej3'] {
+          display: none !important;
         }
       `;
       }
@@ -91,7 +97,7 @@ function runContentScript() {
       // Hide More
       if (instagramSettings.more.value) {
         css += `
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivMessageIconContainer'] {
+        div[class='xhuyl8g xl5mz7h'],div[class='xl5mz7h xl5mz7h'] {
             display: none !important;
         }
             `;
