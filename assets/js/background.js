@@ -39,11 +39,27 @@ const allSettings = {
       color:"primary"
 
     },
-    likesComments: {
+    topNavigation: {
       value: false,
-      description: 'Hide Likes and Comments',
-      tooltip: 'Hides Likes and Comments section from all posts',
+      description: 'Hide Top Navigation',
+      tooltip: 'Hides Top Navigation',
       order: 2,
+      type: 'switch',
+      color:"primary"
+    },
+    shortcut: {
+      value: false,
+      description: 'Hide Shortcuts',
+      tooltip: 'Hides Shortcuts',
+      order: 3,
+      type: 'switch',
+      color:"primary"
+    },
+    leftnavigation: {
+      value: false,
+      description: 'Hide Left Navigation',
+      tooltip: 'Hides left navigation',
+      order: 4,
       type: 'switch',
       color:"primary"
     },
@@ -51,43 +67,10 @@ const allSettings = {
       value: false,
       description: 'Hide Chat Sidebar',
       tooltip: 'Hides Chat sidebar on the right side',
-      order: 3,
-      type: 'switch',
-      color:"primary"
-    },
-    watchFeed: {
-      value: false,
-      description: 'Hide Watch Feed',
-      tooltip: 'Hides Watch button and Feed',
-      order: 4,
-      type: 'switch',
-      color:"primary"
-    },
-    marketplace: {
-      value: false,
-      description: 'Hide Marketplace',
-      tooltip: 'Hides Marketplace shortcut and blocks access',
       order: 5,
       type: 'switch',
       color:"primary"
-    },
-    stories: {
-      value: false,
-      description: 'Hide Stories',
-      tooltip: 'Hides Stories panel from homepage',
-      order: 6,
-      type: 'switch',
-      color:"primary"
-    },
-    color: {
-      value: false,
-      description: 'Remove colors',
-      tooltip: 'Turns everything grey',
-      order: 7,
-      type: 'switch',
-      enabled: false,
-      color:"primary"
-    },
+    }
   },
   youtubeSettings: {
     blockSite: {
@@ -115,10 +98,10 @@ const allSettings = {
       type: 'switch',
       color:"danger"
     },
-    breakingNews: {
+    videoInfo: {
       value: false,
-      description: 'Hide Breaking News',
-      tooltip: 'Hides breaking news and other recommended sections',
+      description: 'Hide Video Info',
+      tooltip: 'Hides video info',
       order: 3,
       type: 'switch',
       color:"danger"
@@ -191,11 +174,19 @@ const allSettings = {
       type: 'switch',
       color:"dark"
     },
+    discover: {
+      value: false,
+      description: 'Hide Discover',
+      tooltip: 'Hide Discover',
+      order: 4,
+      type: 'switch',
+      color:"dark"
+    },
     navigation: {
       value: false,
       description: 'Hide Navigation',
       tooltip: 'Hides Navigation',
-      order: 4,
+      order: 5,
       type: 'switch',
       color:"dark"
     },
@@ -203,7 +194,7 @@ const allSettings = {
       value: false,
       description: 'Hide Search',
       tooltip: 'Hides Search',
-      order: 5,
+      order: 6,
       type: 'switch',
       color:"dark"
     },
@@ -211,7 +202,7 @@ const allSettings = {
       value: false,
       description: 'Hide Direct Messages',
       tooltip: 'Hides Direct Messages',
-      order: 6,
+      order: 7,
       type: 'switch',
       color:"dark"
     },
@@ -219,7 +210,7 @@ const allSettings = {
       value: false,
       description: 'Hide Notifications',
       tooltip: 'Hide Notifications',
-      order: 7,
+      order: 8,
       type: 'switch',
       color:"dark"
     },
@@ -227,7 +218,15 @@ const allSettings = {
       value: false,
       description: 'Hide Account',
       tooltip: 'Hide Account',
-      order: 8,
+      order: 9,
+      type: 'switch',
+      color:"dark"
+    },
+    footer: {
+      value: false,
+      description: 'Hide Footer',
+      tooltip: 'Hide Footer',
+      order: 10,
       type: 'switch',
       color:"dark"
     }
@@ -369,39 +368,37 @@ const allSettings = {
       color:"danger"
 
     },
-    hideComments: {
+    feed: {
       value: false,
-      description: 'Hide comments (old.reddit only)',
-      tooltip: 'Hides comments and discussion threads from all posts',
+      description: 'Hide all feed',
+      tooltip: 'Hide all feed',
       order: 1,
       type: 'switch',
       color:"danger"
 
       // enabled: false
     },
-    hideFrontPageFeed: {
+    rightSideBar: {
       value: false,
-      description: 'Hide Front page feed (old.reddit only)',
-      tooltip: 'Hides posts from your reddit front page',
+      description: 'Hide right side bar',
+      tooltip: 'Hide right side bare',
       order: 2,
       type: 'switch',
       color:"danger"
-
-      // enabled: false
     },
-    popular: {
+    createPost: {
       value: false,
-      description: 'Block r/popular',
-      tooltip: 'Blocks access to r/popular page and hides shortcuts to it',
+      description: 'Hide Create Post',
+      tooltip: 'Hide Section to create a post',
       type: 'switch',
       order: 3,
       color:"danger"
 
     },
-    all: {
+    topNavigation: {
       value: false,
-      description: 'Block r/all',
-      tooltip: 'Blocks access to r/all page and hides shortcuts to it',
+      description: 'Hide Top Navigation',
+      tooltip: 'Hides Top Navigation',
       type: 'switch',
       order: 4,
       color:"danger"
@@ -881,18 +878,6 @@ chrome.webNavigation.onBeforeNavigate.addListener(({ frameId, tabId, url }) => {
       redditSettings.popular.value &&
       relatedDomains.reddit.some((i) => urlDomain.includes(i)) &&
       url.includes('r/popular')
-    ) {
-      safeRedirectOnBlock(
-        tabId,
-        redirectUrl,
-        fallbackUrl,
-        relatedDomains.reddit
-      );
-    }
-    // facebook marketplace
-    else if (
-      facebookSettings.marketplace.value &&
-      url.includes('facebook.com/marketplace')
     ) {
       safeRedirectOnBlock(
         tabId,

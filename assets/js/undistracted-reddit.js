@@ -20,8 +20,8 @@ function runContentScript() {
       .padStart(2, '0');
 
   chrome.storage.sync.get(
-    ['instagramSettings', 'generalSettings'],
-    ({ instagramSettings, generalSettings }) => {
+    ['redditSettings', 'generalSettings'],
+    ({ redditSettings, generalSettings }) => {
       const fromTime = generalSettings.disableDuringHours.value.fromTime;
       const toTime = generalSettings.disableDuringHours.value.toTime;
       // Remove existing and add new
@@ -41,69 +41,45 @@ function runContentScript() {
       ) {
         return;
       }
+
       // Hide Feed
-      if (instagramSettings.feed.value) {
+      if (redditSettings.feed.value) {
         css += `
-        article._ab6k{
-          display: none !important;
-        }
-        footer[role="contentinfo"]{
-          display: none !important;
-        }
-      `;
-      }
-      // Hide Suggested accounts
-      if (instagramSettings.suggestedAccount.value) {
-        css += `
-        div[class='_aak6 _aak9'] div[class='_aak3'] {
+        .ListingLayout-outerContainer div[class="wBtTDilkW_rtT2k5x3eie"] {
             display: none !important;
         }
-        div[class='_aak6 _aak9'] div[class=' _ab8b'] {
-            display: none !important;
-        }
-        div[class=' _ab6k _ab6m  _aa1x _ackf _ackh'] {
-          display: none !important;
-      }
-      `;
-      }
-
-      // Hide Stories
-      if (instagramSettings.stories.value) {
-        css += `
-        div[class='_aac4 _aac5 _aac6'],div[class='x7wzq59 x1dr59a3 x13vifvy'] {
+        .ListingLayout-outerContainer div[data-testid="post-container"] {
             display: none !important;
         }
       `;
       }
 
-      // Hide Sidebar
-      if (instagramSettings.sidebar.value) {
+      // Hide Front Page
+      if (redditSettings.rightSideBar.value) {
         css += `
-        nav[class='_acbh _acbi'] {
+      .ListingLayout-outerContainer div[data-testid="frontpage-sidebar"] {
+        display: none !important;
+      }
+
+      `;
+      }
+
+      // Hide Popular
+      if (redditSettings.createPost.value) {
+        css += `
+        div[class="_2jJNpBqXMbbyOiGCElTYxZ"]:has(input[name="createPost"]) {
             display: none !important;
-        }
-        div[class='xh8yej3 x1to3lk4 x1n2onr6 x2lah0s'],div[class='x1iyjqo2 xh8yej3'] {
-          display: none !important;
         }
       `;
       }
 
-      // Hide Account
-      if (instagramSettings.account.value) {
+      // Hide All
+      if (redditSettings.topNavigation.value) {
         css += `
-        div[class='_aak6 _aak9'] div[class='_aakb _aakc'] {
-            display: none !important;
-        }
-            `;
+        header {
+        display: none !important;
       }
-
-      // Hide More
-      if (instagramSettings.more.value) {
-        css += `
-        div[class='xhuyl8g xl5mz7h'],div[class='xl5mz7h xl5mz7h'] {
-            display: none !important;
-        }
-            `;
+      `;
       }
 
       var style = document.createElement('style');

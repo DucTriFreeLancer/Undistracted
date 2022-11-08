@@ -47,7 +47,19 @@ function runContentScript() {
       .home .newsFeedComposer #contentArea, #m_newsfeed_stream, #MComposer, #MStoriesTray, [role="main"]:not([aria-label="Search Results"]):not([aria-label="Search results"]) div:not([data-pagelet="GroupFeed"])>[role="feed"], [data-pagelet="Stories"] {
         display: none !important;
       }
-      [role="main"]:not([aria-label="Search results"]) [role="article"]{
+      [role="main"] [role="article"]{
+        display: none !important;
+      }
+      [role="main"] [role="tablist"]{
+        display: none !important;
+      }
+      [role="main"] div[class="x1hc1fzr x1unhpq9 x6o7n8i"]{
+        display: none !important;
+      }
+      [role="main"] div[aria-label="Create a post"][role="region"]{
+        display: none !important;
+      }
+      [role="main"] div[aria-label="Stories"][role="region"]{
         display: none !important;
       }
       [aria-label="List of Groups"] ~ div [role="main"] [role="feed"][role="feed"][role="feed"], div [data-pagelet="GroupFeed"] [role="feed"] {
@@ -56,14 +68,39 @@ function runContentScript() {
       `;
       }
 
-      // Hide Likes and Comments box
-      if (facebookSettings.likesComments.value) {
+      // Hide Navigation at the top
+      if (facebookSettings.topNavigation.value) {
         css += `
-      .commentable_item, .story_body_container + footer, [role="article"] div[data-vc-ignore-dynamic], div[data-pagelet^="FeedUnit_"] div[data-visualcompletion=ignore-dynamic] {
-        display: none !important;
-      }
+        [aria-label="Facebook"][role="navigation"]{
+          display: none !important;
+        }
       `;
       }
+      
+      // Hide shortcut
+      if (facebookSettings.shortcut.value) {
+        css += `
+        [role="navigation"] div[class="x1iyjqo2"]>div:nth-of-type(2){
+          display: none !important;
+        }
+      `;
+      }
+
+       // Hide Left Navigation
+       if (facebookSettings.leftnavigation.value) {
+        css += `
+        [role="navigation"] div[class="x1iyjqo2"]>ul:nth-of-type(1){
+          display: none !important;
+        }
+        [role="navigation"] div[class="x1iyjqo2"]>div:nth-of-type(1){
+          display: none !important;
+        }
+        footer[role="contentinfo"][aria-label="Facebook"]{
+          display: none !important;
+        }
+            `;
+      }
+
 
       // Hide Chat Sidebar
       if (facebookSettings.chatSidebar.value) {
@@ -71,41 +108,8 @@ function runContentScript() {
       .fbChatSidebar, #BuddylistPagelet, [data-pagelet="ChatTab"], [aria-label="New Message"], [aria-label="New message"] {
         display: none !important;
       }
-      `;
-      }
-
-      // Hide Watch Feed
-      if (facebookSettings.watchFeed.value) {
-        css += `
-      [aria-label*="Watch"], #watch_feed, [href*="facebook.com/watch"] {
+      [role="complementary"]{
         display: none !important;
-      }
-      `;
-      }
-
-      // Hide Marketplace
-      if (facebookSettings.marketplace.value) {
-        css += `
-        [href*="/marketplace/"] {
-          display: none !important;
-        }
-            `;
-      }
-
-      // Hide Stories
-      if (facebookSettings.stories.value) {
-        css += `
-        [aria-label="Stories"] {
-          display: none !important;
-        }
-            `;
-      }
-
-      // Remove Colors
-      if (facebookSettings.color.value) {
-        css += `
-      * {
-        filter: grayscale(100%);
       }
       `;
       }

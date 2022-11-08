@@ -67,6 +67,15 @@ function runContentScript() {
       `;
       }
 
+      // Hide discover
+      if (tiktokSettings.discover.value) {
+        css += `
+        div[class^='tiktok-'][class*='-DivDiscoverContainer']:has(p[data-e2e="nav-discover-title"])  {
+          display: none !important;
+        }
+      `;
+      }
+      
       // Hide navigation
       if (tiktokSettings.navigation.value) {
         css += `
@@ -78,7 +87,7 @@ function runContentScript() {
         }
       `;
       }
-
+      
       // Hide search
       if (tiktokSettings.search.value) {
         css += `
@@ -114,6 +123,18 @@ function runContentScript() {
         div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivProfileContainer'] {
             display: none !important;
         }
+      `;
+      }
+
+      // Hide footer
+      if (tiktokSettings.footer.value) {
+        css += `
+        div[class^='tiktok-'][class*='-DivFooterContainer'] {
+          display: none !important;
+      }
+      div[class*='-DivBodyContainer'] div[class^='tiktok-'][class*='-DivMainContainer'] div[class*='-DivBottomContainer'] {
+        display: none !important;
+    }
       `;
       }
 

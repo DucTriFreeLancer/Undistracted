@@ -70,16 +70,16 @@ function runContentScript() {
       // Hide Sidebar
       if (youtubeSettings.sidebar.value) {
         css += `
-      ytd-guide-renderer ytd-guide-section-renderer:not(:last-child) {
+        ytd-guide-renderer {
         display: none !important;
       }
       `;
       }
 
-      // Hide Breaking News and other dynamic sections
-      if (youtubeSettings.breakingNews.value) {
+      // Hide video info
+      if (youtubeSettings.videoInfo.value) {
         css += `
-      ytd-rich-section-renderer {
+      ytd-watch-metadata {
         display: none !important;
       }
       `;
