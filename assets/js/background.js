@@ -301,60 +301,58 @@ const allSettings = {
       color:"primary"
 
     },
-    timeline: {
+    feed: {
       value: false,
-      description: 'Hide Timeline',
+      description: 'Hide Feed',
       tooltip: 'Hides homepage feed',
       order: 1,
       type: 'switch',
       color:"primary"
 
     },
-    trends: {
+    rightNavigation: {
       value: false,
-      description: 'Hide Trends',
-      tooltip: 'Hides Trends section from your feed',
+      description: 'Hide Right navigation',
+      tooltip: 'Hide Right navigation',
       order: 2,
       type: 'switch',
       color:"primary"
 
     },
-    whoToFollow: {
+    leftNavigation: {
       value: false,
-      description: 'Hide Who to follow',
-      tooltip: 'Hides Who to follow section',
+      description: 'Hide Left navigation',
+      tooltip: 'Hides Left navigation',
       order: 3,
       type: 'switch',
       color:"primary"
 
     },
-    topics: {
+    search: {
       value: false,
-      description: 'Hide Topics to follow',
-      tooltip: 'Hides Topics to follow section',
+      description: 'Hide Search',
+      tooltip: 'Hides Search',
       order: 4,
       type: 'switch',
       color:"primary"
 
     },
-    media: {
+    tweet: {
       value: false,
-      description: 'Hide all media',
-      tooltip: 'Hides all Videos and Images from your feed',
+      description: 'Hide Tweet Button',
+      tooltip: 'Hides Tweet Button',
       order: 5,
       type: 'switch',
       color:"primary"
 
     },
-    color: {
+    profile: {
       value: false,
-      description: 'Remove colors',
-      tooltip: 'Turns everything grey',
+      description: 'Hide Profile',
+      tooltip: 'Hide Profile',
       order: 6,
       type: 'switch',
-      enabled: false, // Performance Issues
       color:"primary"
-
     },
   },
   redditSettings: {
@@ -370,7 +368,7 @@ const allSettings = {
     },
     feed: {
       value: false,
-      description: 'Hide all feed',
+      description: 'Hide All Feed',
       tooltip: 'Hide all feed',
       order: 1,
       type: 'switch',
@@ -380,7 +378,7 @@ const allSettings = {
     },
     rightSideBar: {
       value: false,
-      description: 'Hide right side bar',
+      description: 'Hide Right Sidebar',
       tooltip: 'Hide right side bare',
       order: 2,
       type: 'switch',
