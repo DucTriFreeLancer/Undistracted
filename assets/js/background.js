@@ -386,6 +386,15 @@ const allSettings = {
       color:"danger"
 
     },
+    subReddit: {
+      value: false,
+      description: 'Hide r/Subreddit Info',
+      tooltip: 'Hide r/Subreddit Info',
+      type: 'switch',
+      order: 5,
+      color:"danger"
+
+    },
   },
   netflixSettings: {
     blockSite: {

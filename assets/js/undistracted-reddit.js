@@ -82,6 +82,19 @@ function runContentScript() {
       `;
       }
 
+      // Hide r/SubReddit
+      if (redditSettings.subReddit.value) {
+        css += `
+        .ListingLayout-outerContainer span[class="_2L5G9B5yaoqW3IegiYN-FL"],
+        .ListingLayout-outerContainer div[class="MSTY2ZpsdupobywLEfx9u "] {
+          display: none !important;
+        }
+        .ListingLayout-outerContainer div[data-testid="subreddit-sidebar"] {
+          display: none !important;
+        }
+      `;
+      }
+
       var style = document.createElement('style');
       style.setAttribute('id', 'undistracted-style');
       style.type = 'text/css';
