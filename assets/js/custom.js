@@ -1,3 +1,4 @@
+import {relatedDomains} from "./script.js";
 const state = {
     twitterSettings: {},
     youtubeSettings: {},
@@ -21,7 +22,7 @@ $(document).ready(function() {
 			'tiktokSettings',
 			'redditSettings',
 			'netflixSettings',
-			'generalSettings',
+			'generalSettings'
 		  ],
 		  ({
 			twitterSettings = {},
@@ -52,6 +53,25 @@ $(document).ready(function() {
 
 			$("#ssa_tab").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
 			$("#ssa_tab li").removeClass('ui-corner-top').addClass('ui-corner-left');
+			
+			chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+				const urlDomain = rootDomain(tabs[0].url);
+				if(relatedDomains.youtube.some((i) => urlDomain.includes(i))){
+					activeTab('youtube');
+			   	} else if(relatedDomains.facebook.some((i) => urlDomain.includes(i))){
+					activeTab('facebook');
+			    } else if(relatedDomains.instagram.some((i) => urlDomain.includes(i))){
+					activeTab('instagram');
+				} else if(relatedDomains.tiktok.some((i) => urlDomain.includes(i))){
+					activeTab('tiktok');
+				} else if(relatedDomains.reddit.some((i) => urlDomain.includes(i))){
+					activeTab('reddit');
+				} else if(relatedDomains.twitter.some((i) => urlDomain.includes(i))){
+					activeTab('twitter');
+				} else if(relatedDomains.netflix.some((i) => urlDomain.includes(i))){
+					activeTab('netflix');
+				}
+			});
 		  }
 		);
 	} 
@@ -69,6 +89,17 @@ $(document).ready(function() {
         }
     });
 });
+function rootDomain(url) {
+	return url
+	  .match(/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/gim)[0]
+	  .split('://')
+	  .reverse()[0]
+	  .split('www.')
+	  .reverse()[0];
+}
+function activeTab (tab){
+	$('.nav.nav-tabs a[href="#' + tab + '"]').click();
+};
 function setState(generalSettings,newSettings,callback){
 	state[generalSettings]= newSettings;
 	if(callback){

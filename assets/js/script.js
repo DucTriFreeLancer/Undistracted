@@ -1,26 +1,16 @@
-(function addMutationObserver() {
-    document.addEventListener('DOMContentLoaded', () => {
-      var body = document.querySelector('body');
-      if (!body) {
-        return;
-      }
-  
-      const assignClass = body => {
-        var isHomePage = !!!window.location.pathname.split('/')[1];
-        if (body) {
-          if (isHomePage) {
-            body.classList.add('isHomePage');
-          } else {
-            body.classList.remove('isHomePage');
-          }
-        }
-      };
-  
-      assignClass(body);
-  
-      var title = document.querySelector('title');
-      if (title) {
-        title.addEventListener('DOMSubtreeModified', () => assignClass(body));
-      }
-    });
-  })();
+export const relatedDomains = {
+    facebook: ['facebook.com', 'fb.com'],
+    youtube: ['youtube.com', 'youtu.be'],
+    tiktok: ['tiktok.com'],
+    instagram: ['instagram.com'],
+    twitter: [
+      'twitter.com',
+      'twimg.com',
+      'twttr.net',
+      'twttr.com',
+      'abs.twimg.com',
+    ],
+    reddit: ['reddit.com', 'old.reddit.com'],
+    netflix: ['netflix.com'],
+    linkedin: ['linkedin.com'],
+};

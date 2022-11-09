@@ -1,23 +1,7 @@
+import {relatedDomains} from "./script.js";
 // Avoid circular
 const fallbackUrl = 'https://www.google.com';
 var myTimer;
-
-const relatedDomains = {
-  facebook: ['facebook.com', 'fb.com'],
-  youtube: ['youtube.com', 'youtu.be'],
-  tiktok: ['tiktok.com'],
-  instagram: ['instagram.com'],
-  twitter: [
-    'twitter.com',
-    'twimg.com',
-    'twttr.net',
-    'twttr.com',
-    'abs.twimg.com',
-  ],
-  reddit: ['reddit.com', 'old.reddit.com'],
-  netflix: ['netflix.com'],
-  linkedin: ['linkedin.com'],
-};
 
 const allSettings = {
   facebookSettings: {
@@ -859,30 +843,6 @@ chrome.webNavigation.onBeforeNavigate.addListener(({ frameId, tabId, url }) => {
           customURLListDomains
         );
       }
-    }
-    //  reddit all and popular
-    else if (
-      redditSettings.all.value &&
-      relatedDomains.reddit.some((i) => urlDomain.includes(i)) &&
-      url.includes('r/all')
-    ) {
-      safeRedirectOnBlock(
-        tabId,
-        redirectUrl,
-        fallbackUrl,
-        relatedDomains.reddit
-      );
-    } else if (
-      redditSettings.popular.value &&
-      relatedDomains.reddit.some((i) => urlDomain.includes(i)) &&
-      url.includes('r/popular')
-    ) {
-      safeRedirectOnBlock(
-        tabId,
-        redirectUrl,
-        fallbackUrl,
-        relatedDomains.reddit
-      );
     }
   }
 });
