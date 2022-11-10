@@ -187,9 +187,9 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 						<div class="btn-toolbar mb-3" role="toolbar">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<div class="input-group-text" id="btnGroupAddon">https://</div>
+									<div class="input-group-text input-control" id="btnGroupAddon">https://</div>
 								</div>
-								<input id="`+filterKey+`type="text" class="form-control" placeholder="www.google.com" aria-label="www.google.com" aria-describedby="btnGroupAddon" value="`+settingsEle[filterKey].value+`">
+								<input id="`+filterKey+`type="text" class="form-control h-100" placeholder="www.google.com" aria-label="www.google.com" aria-describedby="btnGroupAddon" value="`+settingsEle[filterKey].value+`">
 							</div>
 						</div>
 					</li>`
