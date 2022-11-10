@@ -491,15 +491,6 @@ const allSettings = {
       order: 5,
       color:"primary"
 
-    },
-    hideTooltip: {
-      value: false,
-      description: 'Hide tooltips',
-      tooltip: 'Hide all tooltips shown while hovering on filters',
-      type: 'switch',
-      order: 6,
-      color:"primary"
-
     }
   },
 };

@@ -36,14 +36,14 @@ body {
     margin: 0;
     padding: 8px 16px;
   }
-  
+    
   .undistracted-tabs.ant-tabs .ant-tabs-left-content {
     padding-left: 0;
   }
   
   .disabled-filters .panel-logo {
     -webkit-filter: grayscale(1);
-            filter: grayscale(1);
+    filter: grayscale(1);
   }
   .ant-row.ant-form-item {
     margin-right: 0;
