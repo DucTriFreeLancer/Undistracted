@@ -407,33 +407,42 @@ const allSettings = {
       color:"danger"
 
     },
-    hideAllShowMyAndContinue: {
+    feed: {
       value: false,
-      description: 'Hide Recommendations',
-      tooltip: 'Hides everything except "Continue Watching" and "My List"',
+      description: 'Hide Feed',
+      tooltip: 'Hides Feed',
       order: 1,
       type: 'switch',
       color:"danger"
 
     },
-    hideContinueWatching: {
+    navigation: {
       value: false,
-      description: 'Hide Continue Watching',
-      tooltip: 'Hides "Continue Watching" queue section',
+      description: 'Hide Navigation',
+      tooltip: 'Hides Navigation',
       type: 'switch',
       order: 2,
       color:"danger"
 
     },
-    hideMyList: {
+    profile: {
       value: false,
-      description: 'Hide My List',
-      tooltip: 'Hides "My List" section',
+      description: 'Hide Profile',
+      tooltip: 'Hide Profile',
       type: 'switch',
       order: 3,
       color:"danger"
 
     },
+    search: {
+      value: false,
+      description: 'Hide Search',
+      tooltip: 'Hide Search',
+      type: 'switch',
+      order: 3,
+      color:"danger"
+
+    }
   },
   generalSettings: {
     disableFilters: {

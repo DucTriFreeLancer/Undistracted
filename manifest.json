@@ -33,6 +33,10 @@
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-twitter.js"],
       "matches": [ "*://*.twitter.com/*","*://*.twimg.com/*","*://*.twttr.net/*" ,"*://*.twttr.com/*",
       "*://*.abs.twimg.com/*" ]
+   },
+   {
+      "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-netflix.js"],
+      "matches": [ "*://*.netflix.com/*" ]
    }],
    "description": "Allow users to toggle CSS elements of popular websites on and off to eliminate distractions while they work",
    "icons": {
