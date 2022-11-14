@@ -1,4 +1,19 @@
 body {
     font-family: 'Roboto';
   }
-  
+.saved_tags {
+  padding: 4px 8px;
+  background: #ebebeb;
+  float: left;
+  margin: 5px;
+  border-radius: 25px;
+  font-style: italic;
+  color: #333;
+  max-width: 500px;
+}
+.remove_tag{
+  background: gray;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 25px;
+}

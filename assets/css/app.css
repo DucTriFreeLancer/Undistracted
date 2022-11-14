@@ -131,9 +131,6 @@ p {
   display: flex;
   align-items: center;
 }
-.timePickers .ant-tag {
-  padding: 1px 2px;
-}
 
 .timePickers :not(:nth-child(3)) {
   margin-right: 5px;

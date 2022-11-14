@@ -12,6 +12,8 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 	<meta name="theme-color" content="#000000">
 	<title>UnDistracted</title>
+	<link rel="stylesheet" href="assets/css/toastr.min.css">
+	<link rel="stylesheet" href="assets/css/datepicker.css">
 	<link rel="stylesheet" href="assets/css/static.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<style type="text/css">
@@ -227,12 +229,41 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="modal modal-sm fade" id="customURLListModal" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-body">
+						<form class="needs-validation">
+							<div class="form-group">
+								<div class="btn-toolbar mb-3" role="toolbar">
+									<div class="input-group input-group-sm">
+										<div class="input-group-prepend">
+											<div class="input-group-text input-sm input-control" id="btnGroupAddon">https://</div>
+										</div>
+										<input id="inputCustomURL" type="text" class="form-control input-sm h-100" placeholder="www.instagram.com" aria-describedby="btnGroupAddon">
+										<button type="submit" id="addCustomURL" class="btn btn-success">+</button>
+									</div>
+								</div>
+							</div>
+							<div class="url-tags">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery-ui.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap4-toggle.min.js"></script>
 	<script src="assets/js/jquery.validate.js"></script>
+	<script src="assets/js/toastr.min.js"></script>
 	<script type="text/javascript" src="assets/js/moment.min.js"></script>
 	<script type="text/javascript" src="assets/js/datepicker.js"></script>
 	<script type="text/javascript" src="assets/js/fontawesome.min.js"></script>

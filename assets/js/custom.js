@@ -1,4 +1,4 @@
-import {relatedDomains} from "./script.js";
+import {relatedDomains,isValidHttpUrl} from "./script.js";
 const state = {
     twitterSettings: {},
     youtubeSettings: {},
@@ -155,9 +155,16 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 					<li class="ant-list-item filterListItem">
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
 						<div class="time-list-controls">
-							<div class="timePickers">
-								<span class="rc-time-picker timePicker"><input class="rc-time-picker-input" type="text" placeholder="From" readonly="" value="11:00 am" /><span class="rc-time-picker-icon"></span></span><span class="ant-tag">to</span>
-								<span class="rc-time-picker timePicker"><input class="rc-time-picker-input" type="text" placeholder="Until" readonly="" value="5:15 am" /><span class="rc-time-picker-icon"></span></span>
+							<div class="input-group timePickers" id="fromTime" data-target-input="nearest">
+								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#fromTime"/>
+								<div class="input-group-append" data-target="#fromTime" data-toggle="datetimepicker">
+								</div>
+							</div>
+							<span class="ant-tag">to</span>
+							<div class="input-group timePickers" id="toTime" data-target-input="nearest">
+								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#toTime"/>
+								<div class="input-group-append" data-target="#toTime" data-toggle="datetimepicker">
+								</div>
 							</div>
 							<input type="checkbox" class id="`+filterKey+`" `+ (settingsEle[filterKey].value.active?"checked":"") +` 
 							data-onstyle="`+ settingsEle[filterKey].color +`" data-toggle="toggle" data-size="sm">
@@ -168,9 +175,9 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 					elehtml +=`
 					<li class="ant-list-item filterListItem">
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
-						<div class="time-list-controls">
+						<div class="text-list-controls">
 							<div>
-								<button type="button" class="btn btn-sm">
+								<button id="customURLList" type="button" class="btn btn-sm btn-outline-success">
 									<i class="fa-solid fa-pen"></i>
 									<span>Domains to block</span>
 								</button>
@@ -178,18 +185,24 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 							<input type="checkbox" class id="`+filterKey+`" `+ (settingsEle[filterKey].value.active?"checked":"") +` 
 							data-onstyle="`+ settingsEle[filterKey].color +`" data-toggle="toggle" data-size="sm">
 						</div>
-					</li>`
+					</li>`;
+					settingsEle[filterKey].value.customURLList.forEach((val)=>{
+						$(".url-tags").prepend(`<p class="btn-outline-rounded saved_tags" data-reply="`+val+`">`+val+`
+								<button class="btn btn-sm remove_tag" style="padding:0px 4px;">
+									<small style="padding: 2px">x</small>
+								</button>`);
+					})
 				}
 				else if(settingsEle[filterKey].type==="text"){
 					elehtml +=`
 					<li class="ant-list-item filterListItem">
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
 						<div class="btn-toolbar mb-3" role="toolbar">
-							<div class="input-group">
+							<div class="input-group input-group-sm">
 								<div class="input-group-prepend">
-									<div class="input-group-text input-control" id="btnGroupAddon">https://</div>
+									<div class="input-group-text input-sm input-control" id="btnGroupAddon">https://</div>
 								</div>
-								<input id="`+filterKey+`type="text" class="form-control h-100" placeholder="www.google.com" aria-label="www.google.com" aria-describedby="btnGroupAddon" value="`+settingsEle[filterKey].value+`">
+								<input id="`+filterKey+`" type="text" class="form-control input-sm h-100" aria-describedby="btnGroupAddon" value="`+settingsEle[filterKey].value+`">
 							</div>
 						</div>
 					</li>`
@@ -233,19 +246,121 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 							filterKey === 'disableDuringHours'
 						  ) {
 							filterValue = {
-							  active: filterValue.active,
-							  fromTime: filterValue.fromTime,
-							  toTime: filterValue.toTime,
+							  active: filterValue,
+							  fromTime: state[filterCategory][filterKey].value.fromTime,
+							  toTime: state[filterCategory][filterKey].value.toTime,
+							};
+						  } else if (
+							filterCategory === 'generalSettings' &&
+							filterKey === 'customSitesToBlock'
+						  ) {
+							
+							filterValue = {
+							  active: filterValue,
+							  customURLList: state[filterCategory][filterKey].value.customURLList
+
 							};
 						  }
 						updateFilterValue(filterCategory, filterKey, filterValue);
 					})
+					if(settingsEle[filterKey].type==="switch-with-time-period"){
+						$(keyElem +" #fromTime").datetimepicker({
+							format: 'hh:mm a'
+						});
+						$(keyElem +" #toTime").datetimepicker({
+							format: 'hh:mm a'
+						});
+					}
+					if (filterCategory === 'generalSettings' && filterKey === 'customSitesToBlock') {
+						$(keyElem +" #customURLList").on("click",function(){
+							$("#customURLListModal").modal();
+						})
+						
+						// Fetch all the forms we want to apply custom Bootstrap validation styles to
+						var forms = document.querySelectorAll('.needs-validation')
+
+						// Loop over them and prevent submission
+						Array.prototype.slice.call(forms)
+							.forEach(function (form) {
+							$("#inputCustomURL").on("change", () => {
+								if(isValidHttpUrl($("#inputCustomURL").val())){
+									$("#inputCustomURL").addClass("is-valid");
+									$("#inputCustomURL").removeClass("is-invalid");
+									$("#addCustomURL").prop('disabled', false);
+								}
+								else{
+									$("#inputCustomURL").removeClass("is-valid");
+									$("#inputCustomURL").addClass("is-invalid");
+									$("#addCustomURL").prop('disabled', true);
+								}
+							});
+							form.addEventListener('submit', function (event) {
+								event.preventDefault();
+								event.stopPropagation();
+
+								$(".url-tags").prepend(`<p class="btn-outline-rounded saved_tags" data-reply="`+$("#inputCustomURL").val()+`">`+$("#inputCustomURL").val()+`
+								<button class="btn btn-sm remove_tag" style="padding:0px 4px;">
+									<small style="padding: 2px">x</small>
+								</button>
+							</p>`);
+								toastr["success"]( $("#inputCustomURL").val() +" added");
+								var array = [];
+								$('.saved_tags').each(function () {
+									array.push($(this).attr("data-reply") );
+								});
+								let filterValue = {
+									active: state[filterCategory][filterKey].value.active,
+									customURLList: array
+	  
+								};
+								updateFilterValue(filterCategory, filterKey, filterValue);
+								$("#inputCustomURL").val("");
+								$("#inputCustomURL").removeClass("is-valid");
+							}, false)
+							})
+							$(document).on('click', '.remove_tag', function (e) {
+								let reply = $(this).closest('p');
+								reply.remove();
+								var array = [];
+								$('.saved_tags').each(function () {
+									array.push($(this).attr("data-reply") );
+								});
+								let filterValue = {
+									active: state[filterCategory][filterKey].value.active,
+									customURLList: array
+	  
+								};
+								updateFilterValue(filterCategory, filterKey, filterValue);
+								toastr["success"]($(reply).attr("data-reply") +" removed");
+							});
+					}
+
+					
 				}
 				else if(settingsEle[filterKey].type==="switch-multi"){
 					$(keyElem +" input[name='"+filterKey+"']").on("click",function(){
 						var filterValue =  $(this).prop('id').trim().slice(-1);
 						updateFilterValue(filterCategory, filterKey, filterValue);
 					});
+				}
+				else if(settingsEle[filterKey].type==="text"){
+					if (filterCategory === 'generalSettings' && filterKey === 'customRedirectURL') {
+						$(keyElem +" #"+filterKey).on("input",function(){
+							if(isValidHttpUrl($(this).val() || $(this).val().trim()==="")){
+								$(this).addClass("is-valid");
+								$(this).removeClass("is-invalid");
+							}
+							else{
+								$(this).removeClass("is-valid");
+								$(this).addClass("is-invalid");
+							}
+						})
+						$(keyElem +" #"+filterKey).on("blur",function(){
+							if($(this).hasClass("is-valid")){
+								updateFilterValue(filterCategory, filterKey, $(this).val());
+							}
+						})
+					}
 				}
 			}
 		});

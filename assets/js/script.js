@@ -14,3 +14,7 @@ export const relatedDomains = {
     netflix: ['netflix.com'],
     linkedin: ['linkedin.com'],
 };
+export function isValidHttpUrl(textval) {
+  var urlregex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi
+  return urlregex.test(textval);
+}
