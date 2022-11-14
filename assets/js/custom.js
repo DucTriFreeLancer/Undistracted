@@ -52,9 +52,7 @@ $(document).ready(function() {
 			SetToggleElement("#ulnetflix", "netflixSettings",state.netflixSettings );
 			state.generalSettings = generalSettings;
 			SetToggleElement("#ulsetting", "generalSettings",state.generalSettings );
-			if(state.generalSettings.disableFilters.value){
-				$("#ssa_tab").addClass("disabled-filters");
-			}
+
 			$("#ssa_tab").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
 			$("#ssa_tab li").removeClass('ui-corner-top').addClass('ui-corner-left');
 			
@@ -76,6 +74,7 @@ $(document).ready(function() {
 					activeTab('netflix');
 				}
 			});
+			disableFilters();
 		  }
 		);
 	} 
@@ -89,7 +88,10 @@ $(document).ready(function() {
           newSettings.disableFiltersTemporary.value.active !==
             oldSettings.disableFiltersTemporary.value.active
         ) {
-		  setState(filterCategory,newSettings);
+		  setState(filterCategory,newSettings,()=>{
+			disableFilters();
+			$("#ulsetting #disableFiltersTemporary").bootstrapToggle(newSettings.disableFiltersTemporary.value.active?'on':'off');
+		  });
         }
     });
 });
@@ -156,13 +158,13 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
 						<div class="time-list-controls">
 							<div class="input-group timePickers" id="fromTime" data-target-input="nearest">
-								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#fromTime"/>
+								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" value="`+settingsEle[filterKey].value.fromTime+`" data-target="#fromTime"/>
 								<div class="input-group-append" data-target="#fromTime" data-toggle="datetimepicker">
 								</div>
 							</div>
 							<span class="ant-tag">to</span>
 							<div class="input-group timePickers" id="toTime" data-target-input="nearest">
-								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#toTime"/>
+								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" value="`+settingsEle[filterKey].value.toTime+`" data-target="#toTime"/>
 								<div class="input-group-append" data-target="#toTime" data-toggle="datetimepicker">
 								</div>
 							</div>
@@ -245,10 +247,11 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 							filterCategory === 'generalSettings' &&
 							filterKey === 'disableDuringHours'
 						  ) {
+							
 							filterValue = {
 							  active: filterValue,
-							  fromTime: state[filterCategory][filterKey].value.fromTime,
-							  toTime: state[filterCategory][filterKey].value.toTime,
+							  fromTime:  state[filterCategory][filterKey].value.fromTime,
+							  toTime:  state[filterCategory][filterKey].value.toTime,
 							};
 						  } else if (
 							filterCategory === 'generalSettings' &&
@@ -267,8 +270,24 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 						$(keyElem +" #fromTime").datetimepicker({
 							format: 'hh:mm a'
 						});
+						$(keyElem +" #fromTime").on("change.datetimepicker", ({date, oldDate}) => {
+							let filterValue ={ 
+								active: state[filterCategory][filterKey].value.active, 
+								fromTime: moment(date).format("HH:mm"), 
+								toTime: state[filterCategory][filterKey].value.toTime
+							}
+							updateFilterValue(filterCategory, filterKey, filterValue);
+						});	
 						$(keyElem +" #toTime").datetimepicker({
 							format: 'hh:mm a'
+						})
+						$(keyElem +" #toTime").on("change.datetimepicker", ({date, oldDate}) => {
+							let filterValue ={ 
+								active: state[filterCategory][filterKey].value.active, 
+								fromTime: state[filterCategory][filterKey].value.fromTime, 
+								toTime:moment(date).format("HH:mm")
+							}
+							updateFilterValue(filterCategory, filterKey, filterValue);
 						});
 					}
 					if (filterCategory === 'generalSettings' && filterKey === 'customSitesToBlock') {
@@ -308,6 +327,7 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 								$('.saved_tags').each(function () {
 									array.push($(this).attr("data-reply") );
 								});
+
 								let filterValue = {
 									active: state[filterCategory][filterKey].value.active,
 									customURLList: array
@@ -367,13 +387,40 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 	}
 }
 function updateFilterValue(filterCategory, filterKey, filterValue){
+	
 	const tempSettings = state[filterCategory];
     tempSettings[filterKey].value = filterValue;
     setState(filterCategory,tempSettings, () => {
+	  disableFilters();
       if (chrome.storage) {
         chrome.storage.sync.set({
           [filterCategory]: state[filterCategory],
         });
       }
     });
+}
+const disableFilters=()=>{
+	const currentTime =
+	new Date()
+		.getHours()
+		.toString()
+		.padStart(2, '0') +
+	':' +
+	new Date()
+		.getMinutes()
+		.toString()
+		.padStart(2, '0');
+	const fromTime =  state.generalSettings.disableDuringHours.value.fromTime;
+	const toTime =  state.generalSettings.disableDuringHours.value.toTime;
+	if(state.generalSettings.disableFilters.value ||
+		state.generalSettings.disableFiltersTemporary.value.active ||
+		( state.generalSettings.disableDuringHours.value.active &&(fromTime < toTime
+		? fromTime <= currentTime && currentTime < toTime
+		: (fromTime <= currentTime && currentTime <= '23:59') ||
+			('00:00' <= currentTime && currentTime < toTime)))){
+		$("#ssa_tab").addClass("disabled-filters");
+	}
+	else{
+		$("#ssa_tab").removeClass("disabled-filters");
+	}
 }

@@ -14,7 +14,7 @@
       "matches": [ "*://*.facebook.com/*" ]
    }, 
    {
-      "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-youtube.js","/assets/js/script.js"],
+      "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-youtube.js"],
       "matches": [ "*://*.youtube.com/*"  ]
    },
    {

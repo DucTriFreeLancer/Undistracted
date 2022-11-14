@@ -465,7 +465,7 @@ const allSettings = {
 
     },
     disableDuringHours: {
-      value: { active: false, fromTime: '', toTime: '' },
+      value: { active: false, fromTime: '3:45', toTime: '16:30' },
       description: 'Pause during',
       tooltip: '',
       type: 'switch-with-time-period',
