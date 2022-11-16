@@ -52,8 +52,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(87%);
-          background: rgb(242, 242, 242) !important;
+          filter: invert(100%) contrast(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;
@@ -63,6 +62,8 @@ function runContentScript() {
 
       // Hide Feed
       if (facebookSettings.feed.value) {
+        //stop video
+        document.querySelectorAll('video').forEach(vid => vid.pause());
         css += `
       .home .newsFeedComposer #contentArea, #m_newsfeed_stream, #MComposer, #MStoriesTray, [role="main"]:not([aria-label="Search Results"]):not([aria-label="Search results"]) div:not([data-pagelet="GroupFeed"])>[role="feed"], [data-pagelet="Stories"] {
         display: none !important;

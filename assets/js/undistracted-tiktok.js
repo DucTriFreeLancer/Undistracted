@@ -52,8 +52,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(87%);
-          background: rgb(242, 242, 242) !important;
+          filter: invert(100%) contrast(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;
@@ -63,6 +62,8 @@ function runContentScript() {
 
       // Hide Feed
       if (tiktokSettings.feed.value) {
+        //stop video
+        document.querySelectorAll('video').forEach(vid => vid.pause());
         css += `
         div[class*='-DivBodyContainer'] div[class^='tiktok-'][class*='-DivMainContainer'] div[data-e2e="recommend-list-item-container"] {
             display: none !important;

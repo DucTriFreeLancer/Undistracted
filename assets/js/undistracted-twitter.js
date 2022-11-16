@@ -52,8 +52,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(87%);
-          background: rgb(242, 242, 242) !important;
+          filter: invert(100%) contrast(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;
@@ -63,6 +62,8 @@ function runContentScript() {
 
       // Hide Timeline - Opacity instead of Display to avoid re-trigger of layout drawing and hence slowdown
       if (twitterSettings.feed.value) {
+        //stop video
+        document.querySelectorAll('video').forEach(vid => vid.pause());
         css += `
         [role='main']#timeline .stream-container,[role='main'] [aria-label="Home timeline"] {
           visibility: hidden !important;

@@ -51,8 +51,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(87%);
-          background: rgb(242, 242, 242) !important;
+          filter: invert(100%) contrast(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;
@@ -62,6 +61,8 @@ function runContentScript() {
 
       // Hide Feed
       if (instagramSettings.feed.value) {
+        //stop video
+        document.querySelectorAll('video').forEach(vid => vid.pause());
         css += `
         article._ab6k{
           display: none !important;

@@ -63,8 +63,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(87%);
-          background: rgb(242, 242, 242) !important;
+          filter: invert(100%) contrast(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;
@@ -74,6 +73,8 @@ function runContentScript() {
 
       // Hide Recommendations
       if (youtubeSettings.recommendations.value) {
+        //stop video
+        document.querySelectorAll('video').forEach(vid => vid.pause());
         css += `
         [page-subtype="home"] #primary {
         display: none !important;
