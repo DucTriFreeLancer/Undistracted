@@ -78,7 +78,7 @@ const allSettings = {
       value: false,
       description: 'Force redirect to my subscriptions',
       tooltip: "Always redirect YouTube's homepage to my subscriptions feed",
-      order: 2,
+      order: 6,
       type: 'switch',
       color:"danger"
     },
@@ -86,7 +86,7 @@ const allSettings = {
       value: false,
       description: 'Hide Video Info',
       tooltip: 'Hides video info',
-      order: 3,
+      order: 4,
       type: 'switch',
       color:"danger"
     },
@@ -94,7 +94,7 @@ const allSettings = {
       value: false,
       description: 'Hide Sidebar',
       tooltip: 'Hides sidebar with shortcuts to other YouTube pages',
-      order: 4,
+      order: 2,
       type: 'switch',
       color:"danger"
     },
@@ -110,7 +110,7 @@ const allSettings = {
       value: 0,
       description: 'Blur/Hide Thumbnails',
       tooltip: 'Blurs/Hides Video Thumbnail',
-      order: 6,
+      order: 7,
       type: 'switch-multi',
       color:"danger"
     },
@@ -118,7 +118,7 @@ const allSettings = {
       value: false,
       description: 'Hide Up Next Suggestions',
       tooltip: 'Hide suggested videos after and during the video',
-      order: 7,
+      order: 3,
       type: 'switch',
       color:"danger"
     },
@@ -174,11 +174,19 @@ const allSettings = {
       type: 'switch',
       color:"dark"
     },
+    footer: {
+      value: false,
+      description: 'Hide Footer',
+      tooltip: 'Hide Footer',
+      order: 6,
+      type: 'switch',
+      color:"dark"
+    },
     search: {
       value: false,
       description: 'Hide Search',
       tooltip: 'Hides Search',
-      order: 6,
+      order: 7,
       type: 'switch',
       color:"dark"
     },
@@ -186,7 +194,7 @@ const allSettings = {
       value: false,
       description: 'Hide Direct Messages',
       tooltip: 'Hides Direct Messages',
-      order: 7,
+      order: 8,
       type: 'switch',
       color:"dark"
     },
@@ -194,7 +202,7 @@ const allSettings = {
       value: false,
       description: 'Hide Notifications',
       tooltip: 'Hide Notifications',
-      order: 8,
+      order: 9,
       type: 'switch',
       color:"dark"
     },
@@ -202,14 +210,6 @@ const allSettings = {
       value: false,
       description: 'Hide Account',
       tooltip: 'Hide Account',
-      order: 9,
-      type: 'switch',
-      color:"dark"
-    },
-    footer: {
-      value: false,
-      description: 'Hide Footer',
-      tooltip: 'Hide Footer',
       order: 10,
       type: 'switch',
       color:"dark"
@@ -249,30 +249,22 @@ const allSettings = {
       type: 'switch',
       color:"warning"
     },
-    sidebar: {
-      value: false,
-      description: 'Hide Sidebar',
-      tooltip: 'Hides Sidebar',
-      order: 4,
-      type: 'switch',
-      color:"warning"
-    },
-    account: {
-      value: false,
-      description: 'Hide Account',
-      tooltip: 'Hides Account',
-      order: 5,
-      type: 'switch',
-      color:"warning"
-    },
     more: {
       value: false,
       description: 'Hide More',
       tooltip: 'Hides more',
-      order: 6,
+      order: 4,
       type: 'switch',
       color:"warning"
-    }
+    },
+    sidebar: {
+      value: false,
+      description: 'Hide Left Navigation',
+      tooltip: 'Hide Left Navigation',
+      order: 5,
+      type: 'switch',
+      color:"warning"
+    },
   },
   twitterSettings: {
     blockSite: {
@@ -296,7 +288,7 @@ const allSettings = {
     },
     rightNavigation: {
       value: false,
-      description: 'Hide Right navigation',
+      description: 'Hide Right Navigation',
       tooltip: 'Hide Right navigation',
       order: 2,
       type: 'switch',
@@ -305,18 +297,9 @@ const allSettings = {
     },
     leftNavigation: {
       value: false,
-      description: 'Hide Left navigation',
+      description: 'Hide Left Navigation',
       tooltip: 'Hides Left navigation',
       order: 3,
-      type: 'switch',
-      color:"primary"
-
-    },
-    search: {
-      value: false,
-      description: 'Hide Search',
-      tooltip: 'Hides Search',
-      order: 4,
       type: 'switch',
       color:"primary"
 
@@ -325,7 +308,7 @@ const allSettings = {
       value: false,
       description: 'Hide Tweet Button',
       tooltip: 'Hides Tweet Button',
-      order: 5,
+      order: 4,
       type: 'switch',
       color:"primary"
 
@@ -334,10 +317,19 @@ const allSettings = {
       value: false,
       description: 'Hide Profile',
       tooltip: 'Hide Profile',
-      order: 6,
+      order: 5,
       type: 'switch',
       color:"primary"
     },
+    search: {
+      value: false,
+      description: 'Hide Search',
+      tooltip: 'Hides Search',
+      order: 6,
+      type: 'switch',
+      color:"primary"
+
+    }
   },
   redditSettings: {
     blockSite: {
@@ -352,8 +344,8 @@ const allSettings = {
     },
     feed: {
       value: false,
-      description: 'Hide All Feed',
-      tooltip: 'Hide all feed',
+      description: 'Hide Feed',
+      tooltip: 'Hide Feed',
       order: 1,
       type: 'switch',
       color:"danger"
@@ -416,12 +408,30 @@ const allSettings = {
       color:"danger"
 
     },
+    myList: {
+      value: false,
+      description: 'Hide My List',
+      tooltip: 'Hides My List',
+      order: 2,
+      type: 'switch',
+      color:"danger"
+
+    },
+    continueWatching: {
+      value: false,
+      description: 'Hide Continue Watching',
+      tooltip: 'Hide Continue Watching',
+      order: 3,
+      type: 'switch',
+      color:"danger"
+
+    },
     navigation: {
       value: false,
       description: 'Hide Navigation',
       tooltip: 'Hides Navigation',
       type: 'switch',
-      order: 2,
+      order: 4,
       color:"danger"
 
     },
@@ -430,7 +440,7 @@ const allSettings = {
       description: 'Hide Profile',
       tooltip: 'Hide Profile',
       type: 'switch',
-      order: 3,
+      order: 5,
       color:"danger"
 
     },
@@ -439,9 +449,8 @@ const allSettings = {
       description: 'Hide Search',
       tooltip: 'Hide Search',
       type: 'switch',
-      order: 3,
+      order: 6,
       color:"danger"
-
     }
   },
   generalSettings: {
@@ -484,7 +493,7 @@ const allSettings = {
     },
     customRedirectURL: {
       value: 'www.google.com',
-      description: 'Custom URL',
+      description: 'Redirect Blocked Websites To:',
       tooltip:
         'Enter link to a site where you wants to be redirected to if blocked',
       type: 'text',
