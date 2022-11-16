@@ -88,15 +88,6 @@ function runContentScript() {
       `;
       }
 
-      // Hide Account
-      if (instagramSettings.account.value) {
-        css += `
-        div[class='_aak6 _aak9'] div[class='_aakb _aakc'] {
-            display: none !important;
-        }
-            `;
-      }
-
       // Hide More
       if (instagramSettings.more.value) {
         css += `
