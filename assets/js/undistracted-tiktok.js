@@ -41,6 +41,26 @@ function runContentScript() {
       ) {
         return;
       }
+
+      let all = true;
+      Object.keys(tiktokSettings).forEach((key)=>{
+        if(key !="blockSite" && !tiktokSettings[key].value){
+          all = false;
+        }
+      })
+      // Dark background
+      if(all){
+        css += `
+        html {
+          filter: invert(100%) contrast(87%);
+          background: rgb(242, 242, 242) !important;
+        }
+        svg[aria-label="Loading..."]{
+          display: none !important;
+        }
+        `;
+      }
+
       // Hide Feed
       if (tiktokSettings.feed.value) {
         css += `

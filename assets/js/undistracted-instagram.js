@@ -41,6 +41,25 @@ function runContentScript() {
       ) {
         return;
       }
+      let all = true;
+      Object.keys(instagramSettings).forEach((key)=>{
+        if(key !="blockSite" && !instagramSettings[key].value){
+          all = false;
+        }
+      })
+      // Dark background
+      if(all){
+        css += `
+        html {
+          filter: invert(100%) contrast(87%);
+          background: rgb(242, 242, 242) !important;
+        }
+        svg[aria-label="Loading..."]{
+          display: none !important;
+        }
+        `;
+      }
+
       // Hide Feed
       if (instagramSettings.feed.value) {
         css += `
@@ -96,6 +115,7 @@ function runContentScript() {
         }
             `;
       }
+     
 
       var style = document.createElement('style');
       style.setAttribute('id', 'undistracted-style');
