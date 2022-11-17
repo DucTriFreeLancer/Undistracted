@@ -63,7 +63,6 @@ function runContentScript() {
       // Hide Recommendations
       if (netflixSettings.feed.value) {
         //stop video
-        document.querySelectorAll('video').forEach(vid => vid.pause());
         const billboardVideo = document.querySelector('.billboard video');
 
         if (billboardVideo) {
@@ -87,6 +86,23 @@ function runContentScript() {
         display: none !important;
         }
         `;
+      }
+
+      // Hide My List
+      if (netflixSettings.myList.value) {
+        css += `
+        .lolomoRow[data-list-context='queue']  {
+            display: none !important;
+        }
+        `;
+      }
+      // Hide Continue Watching
+      if (netflixSettings.continueWatching.value) {
+      css += `
+      .lolomoRow[data-list-context='continueWatching']  {
+          display: none !important;
+      }
+      `;
       }
 
       // Hide Navigation
