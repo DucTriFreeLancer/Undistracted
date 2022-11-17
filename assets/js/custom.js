@@ -189,23 +189,52 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 						</div>
 					</li>`;
 					settingsEle[filterKey].value.customURLList.forEach((val)=>{
-						$(".url-tags").prepend(`<p class="btn-outline-rounded saved_tags" data-reply="`+val+`">`+val+`
-								<button class="btn btn-sm remove_tag" style="padding:0px 4px;">
+						$(".url-tags").prepend(`<span class="saved_tags" data-reply="`+val+`">`+val+`
+								<i class="fa fa-times remove_tag">
 									<small style="padding: 2px">x</small>
-								</button>`);
+								</i></span>`);
 					})
 				}
 				else if(settingsEle[filterKey].type==="text"){
 					elehtml +=`
 					<li class="ant-list-item filterListItem">
 						<div class="filterDescription">`+settingsEle[filterKey].description+`</div>
-						<div class="btn-toolbar mb-3" role="toolbar">
+						<div class="btn-toolbar" role="toolbar">
 							<div class="input-group input-group-sm">
 								<div class="input-group-prepend">
 									<div class="input-group-text input-sm input-control" id="btnGroupAddon">https://</div>
 								</div>
 								<input id="`+filterKey+`" type="text" class="form-control input-sm h-100" aria-describedby="btnGroupAddon" value="`+settingsEle[filterKey].value+`">
 							</div>
+						</div>
+					</li>`
+				}
+				else if(settingsEle[filterKey].type==="button-list"){
+					elehtml +=`
+					<li class="ant-list-item filterListItem" style="padding: 0px;">
+						<div style="width: 100%; display: flex;">
+					`		
+					
+					settingsEle[filterKey].buttonList.forEach((button)=>{
+						elehtml+=`
+							<div class="ant-card" style="cursor: pointer;flex-grow: 1;box-shadow: rgb(232, 232, 232) 1px 0px 0px 0px, rgb(232, 232, 232) 0px 1px 0px 0px, rgb(232, 232, 232) 1px 1px 0px 0px, rgb(232, 232, 232) 1px 0px 0px 0px inset, rgb(232, 232, 232) 0px 1px 0px 0px inset;">
+								<div class="ant-body" style="padding: 8px;">
+									<div style="display: flex; align-items: center; justify-content: center;">
+										<i aria-hidden="true" class="fa fa-`+button.icon+`" style="color: `+button.iconColor+`"></i>
+										<a style="white-space: nowrap; margin-left: 3px; font-size: smaller;" target="_blank" href="`+(button.action==="mail"?"mailto:":"https://")+button.to+`">`+button.title+`</a>
+									</div>
+								</div>
+							</div>
+						`
+					});
+					elehtml+=`	</div>
+					</li>`;
+				}
+				else if(settingsEle[filterKey].type==="image"){
+					elehtml +=`
+					<li class="ant-list-item filterListItem">
+						<div style="width: 100%; display: flex; justify-content: center;">
+						`+settingsEle[filterKey].link+`
 						</div>
 					</li>`
 				}
@@ -317,10 +346,10 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 								event.preventDefault();
 								event.stopPropagation();
 
-								$(".url-tags").prepend(`<p class="btn-outline-rounded saved_tags" data-reply="`+$("#inputCustomURL").val()+`">`+$("#inputCustomURL").val()+`
-								<button class="btn btn-sm remove_tag" style="padding:0px 4px;">
+								$(".url-tags").prepend(`<span class="saved_tags" data-reply="`+$("#inputCustomURL").val()+`">`+$("#inputCustomURL").val()+`
+								<i class="fa fa-times remove_tag">
 									<small style="padding: 2px">x</small>
-								</button>
+								</i></span>
 							</p>`);
 								toastr["success"]( $("#inputCustomURL").val() +" added");
 								var array = [];
@@ -339,7 +368,7 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 							}, false)
 							})
 							$(document).on('click', '.remove_tag', function (e) {
-								let reply = $(this).closest('p');
+								let reply = $(this).closest('span');
 								reply.remove();
 								var array = [];
 								$('.saved_tags').each(function () {
