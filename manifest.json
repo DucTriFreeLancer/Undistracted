@@ -47,12 +47,18 @@
    },
    "manifest_version": 3,
    "name": "Toggle CSS elements ",
-   "permissions": [ "tabs","activeTab","storage",
+   "permissions": [ "tabs",
+      "storage",
       "webNavigation"  
    ],
    "host_permissions": [
       "*://*.facebook.com/*",
-      "*://*.youtube.com/*"
+      "*://*.youtube.com/*",
+      "*://*.tiktok.com/*",
+      "*://*.reddit.com/*",
+      "*://*.twitter.com/*",
+      "*://*.instagram.com/*",
+      "*://*.netflix.com/*"
    ],
    "optional_host_permissions": [
       "*://*/*"
