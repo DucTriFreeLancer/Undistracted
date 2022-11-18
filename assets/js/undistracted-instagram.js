@@ -51,7 +51,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(100%);
+          filter:  brightness(0) saturate(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;

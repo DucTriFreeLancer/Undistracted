@@ -42,24 +42,6 @@ function runContentScript() {
         return;
       }
 
-      let all = true;
-      Object.keys(facebookSettings).forEach((key)=>{
-        if(key !="blockSite" && !facebookSettings[key].value){
-          all = false;
-        }
-      })
-      // Dark background
-      if(all){
-        css += `
-        html {
-          filter: invert(100%) contrast(100%);
-        }
-        svg[aria-label="Loading..."]{
-          display: none !important;
-        }
-        `;
-      }
-
       // Hide Feed
       if (facebookSettings.feed.value) {
         //stop video

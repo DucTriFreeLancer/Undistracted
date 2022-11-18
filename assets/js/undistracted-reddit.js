@@ -52,7 +52,7 @@ function runContentScript() {
       if(all){
         css += `
         html {
-          filter: invert(100%) contrast(100%);
+          filter:  brightness(0) saturate(100%);
         }
         svg[aria-label="Loading..."]{
           display: none !important;
@@ -69,6 +69,14 @@ function runContentScript() {
             display: none !important;
         }
         .ListingLayout-outerContainer div[data-testid="post-container"] {
+            display: none !important;
+        }
+      `;
+      }
+      // Hide Chats
+      if (redditSettings.chat.value) {
+        css += `
+        .ListingLayout-outerContainer div[class="YfUlQeQY0xbmCv-So3isP"] {
             display: none !important;
         }
       `;

@@ -352,11 +352,21 @@ const allSettings = {
 
       // enabled: false
     },
+    chat: {
+      value: false,
+      description: 'Hide Chats',
+      tooltip: 'Hide Chats',
+      order: 2,
+      type: 'switch',
+      color:"danger"
+
+      // enabled: false
+    },
     rightSideBar: {
       value: false,
       description: 'Hide Right Sidebar',
       tooltip: 'Hide right side bare',
-      order: 2,
+      order: 3,
       type: 'switch',
       color:"danger"
     },
@@ -365,7 +375,7 @@ const allSettings = {
       description: 'Hide Create Post',
       tooltip: 'Hide Section to create a post',
       type: 'switch',
-      order: 3,
+      order: 4,
       color:"danger"
 
     },
@@ -374,7 +384,7 @@ const allSettings = {
       description: 'Hide Top Navigation',
       tooltip: 'Hides Top Navigation',
       type: 'switch',
-      order: 4,
+      order: 5,
       color:"danger"
 
     },
@@ -383,7 +393,7 @@ const allSettings = {
       description: 'Hide r/Subreddit Info',
       tooltip: 'Hide r/Subreddit Info',
       type: 'switch',
-      order: 5,
+      order: 6,
       color:"danger"
 
     },
