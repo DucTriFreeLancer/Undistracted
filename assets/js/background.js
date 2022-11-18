@@ -520,7 +520,7 @@ const allSettings = {
           icon: 'star',
           iconColor: '#01b1f1',
           to:
-            'chrome.google.com/webstore/category/extensions',
+            "https://chrome.google.com/webstore/detail/"+chrome.runtime.id+'/reviews',
         },
         {
           title: 'Request Feature',
@@ -528,7 +528,7 @@ const allSettings = {
           icon: 'plus-circle',
           iconColor: '#52c41a',
           to:
-            'undistracted.developer+feature@gmail.com?subject=Feature Request&body=Feature description: ',
+            'hanskang@hotmail.ca?subject=Feature Request&body=Feature description: ',
         },
         {
           title: 'Report bug',
@@ -536,7 +536,7 @@ const allSettings = {
           icon: 'wrench',
           iconColor: '#eb2f96',
           to:
-            'undistracted.developer+bug@gmail.com?subject=Bug Report&body=Operating System [Windows, Linux, Mac OS, Chrome OS]: %0D%0ABug Description: %0D%0AScreenshot (if applicable): ',
+            'hanskang@hotmail.ca?subject=Bug Report&body=Operating System [Windows, Linux, Mac OS, Chrome OS]: %0D%0ABug Description: %0D%0AScreenshot (if applicable): ',
         },
       ],
       type: 'button-list',
@@ -548,7 +548,7 @@ const allSettings = {
       tooltip: 'Support the development',
       type: 'image',
       link:
-        '<style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 15px 7px 10px !important;line-height: 35px !important;height:51px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#5F7FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 15px 7px 10px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:\'Cookie\', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/betterself"><img src="https://res.cloudinary.com/dxmi9d3vj/image/upload/v1594642510/book_dfhgvh.svg" alt="Buy me a book"><span style="margin-left:5px;font-size:28px !important;">Buy me a book</span></a>',
+        '<style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 15px 7px 10px !important;line-height: 35px !important;height:51px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#5F7FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 15px 7px 10px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:\'Cookie\', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://paypal.me/hanskang1?country.x=CA&locale.x=en_US"><img src="https://res.cloudinary.com/dxmi9d3vj/image/upload/v1594642510/book_dfhgvh.svg" alt="Buy me a book"><span style="margin-left:5px;font-size:28px !important;">Buy me a book</span></a>',
       order: 7,
     },
   },
