@@ -47,26 +47,8 @@ function runContentScript() {
         //stop video
         document.querySelectorAll('video').forEach(vid => vid.pause());
         css += `
-      .home .newsFeedComposer #contentArea, #m_newsfeed_stream, #MComposer, #MStoriesTray, [role="main"]:not([aria-label="Search Results"]):not([aria-label="Search results"]) div:not([data-pagelet="GroupFeed"])>[role="feed"], [data-pagelet="Stories"] {
+      .home .newsFeedComposer #contentArea, #m_newsfeed_stream, #MComposer, #MStoriesTray, [role="main"], [data-pagelet="Stories"] {
         display: none !important;
-      }
-      [role="main"] [role="article"]{
-        display: none !important;
-      }
-      [role="main"] [role="tablist"]{
-        display: none !important;
-      }
-      [role="main"] div[class="x1hc1fzr x1unhpq9 x6o7n8i"]{
-        display: none !important;
-      }
-      [role="main"] div[aria-label="Create a post"][role="region"]{
-        display: none !important;
-      }
-      [role="main"] div[aria-label="Stories"][role="region"]{
-        display: none !important;
-      }
-      [aria-label="List of Groups"] ~ div [role="main"] [role="feed"][role="feed"][role="feed"], div [data-pagelet="GroupFeed"] [role="feed"] {
-        display: initial !important;
       }
       `;
       }
@@ -101,7 +83,7 @@ function runContentScript() {
         footer[role="contentinfo"][aria-label="Facebook"]{
           display: none !important;
         }
-            `;
+        `;
       }
 
 
