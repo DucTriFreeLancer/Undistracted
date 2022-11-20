@@ -76,7 +76,7 @@ const allSettings = {
     },
     redirectToSubscriptions: {
       value: false,
-      description: 'Force redirect to my subscriptions',
+      description: 'Force Redirect To My Subscriptions',
       tooltip: "Always redirect YouTube's homepage to my subscriptions feed",
       order: 6,
       type: 'switch',
@@ -108,7 +108,7 @@ const allSettings = {
     },
     thumbnail: {
       value: 0,
-      description: 'Blur/Hide Thumbnails',
+      description: 'Blur/ Hide Thumbnails',
       tooltip: 'Blurs/Hides Video Thumbnail',
       order: 7,
       type: 'switch-multi',
@@ -466,7 +466,7 @@ const allSettings = {
   generalSettings: {
     disableFilters: {
       value: false,
-      description: 'Pause all filters',
+      description: 'Pause All Filters',
       tooltip:
         'Disables all filters temporarily. Your filter settings will remain intact',
       type: 'switch',
@@ -475,7 +475,7 @@ const allSettings = {
     },
     disableFiltersTemporary: {
       value: { active: false, endTimestamp: '' },
-      description: 'Pause for 5 minutes',
+      description: 'Pause For 5 Minutes',
       tooltip:
         'Pauses all filters for 5 minutes and then resumes automatically',
       type: 'switch-with-meta',
@@ -485,7 +485,7 @@ const allSettings = {
     },
     disableDuringHours: {
       value: { active: false, fromTime: '3:45', toTime: '16:30' },
-      description: 'Pause during',
+      description: 'Pause During',
       tooltip: '',
       type: 'switch-with-time-period',
       order: 3,
@@ -494,7 +494,7 @@ const allSettings = {
     },
     customSitesToBlock: {
       value: { active: false, customURLList: [] },
-      description: 'Block list',
+      description: 'Block List',
       tooltip: '',
       type: 'text-list',
       order: 4,
@@ -515,7 +515,7 @@ const allSettings = {
       tooltip: 'Help the developer improve this extension',
       buttonList: [
         {
-          title: 'Leave rating',
+          title: 'Leave Rating',
           action: 'redirect',
           icon: 'star',
           iconColor: '#01b1f1',
@@ -523,21 +523,13 @@ const allSettings = {
             "https://chrome.google.com/webstore/detail/"+chrome.runtime.id+'/reviews',
         },
         {
-          title: 'Request Feature',
+          title: 'Suggest Feature Or Report Bug',
           action: 'mail',
           icon: 'plus-circle',
           iconColor: '#52c41a',
           to:
-            'hanskang@hotmail.ca?subject=Feature Request&body=Feature description: ',
-        },
-        {
-          title: 'Report bug',
-          action: 'mail',
-          icon: 'wrench',
-          iconColor: '#eb2f96',
-          to:
-            'hanskang@hotmail.ca?subject=Bug Report&body=Operating System [Windows, Linux, Mac OS, Chrome OS]: %0D%0ABug Description: %0D%0AScreenshot (if applicable): ',
-        },
+            'hanskang@hotmail.ca?subject=Suggest Feature Or Report Bug&body=Description: ',
+        }
       ],
       type: 'button-list',
       order: 6,
@@ -550,6 +542,7 @@ const allSettings = {
       link:
         '<style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 15px 7px 10px !important;line-height: 35px !important;height:51px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#5F7FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 15px 7px 10px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:\'Cookie\', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://paypal.me/hanskang1?country.x=CA&locale.x=en_US"><img src="https://res.cloudinary.com/dxmi9d3vj/image/upload/v1594642510/book_dfhgvh.svg" alt="Buy me a book"><span style="margin-left:5px;font-size:28px !important;">Buy me a book</span></a>',
       order: 7,
+      enabled: false
     },
   },
 };

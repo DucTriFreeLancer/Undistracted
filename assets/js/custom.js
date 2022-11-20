@@ -162,7 +162,7 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 								<div class="input-group-append" data-target="#fromTime" data-toggle="datetimepicker">
 								</div>
 							</div>
-							<span class="ant-tag">to</span>
+							<span class="ant-tag">To</span>
 							<div class="input-group timePickers" id="toTime" data-target-input="nearest">
 								<input type="text" id="date" name="reminder_time" class="form-control datetimepicker-input" data-toggle="datetimepicker" value="`+settingsEle[filterKey].value.toTime+`" data-target="#toTime"/>
 								<div class="input-group-append" data-target="#toTime" data-toggle="datetimepicker">
@@ -181,7 +181,7 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 							<div>
 								<button id="customURLList" type="button" class="btn btn-sm btn-outline-success">
 									<i class="fa-solid fa-pen"></i>
-									<span>Domains to block</span>
+									<span>Domains To Block</span>
 								</button>
 							</div>
 							<input type="checkbox" class id="`+filterKey+`" `+ (settingsEle[filterKey].value.active?"checked":"") +` 
