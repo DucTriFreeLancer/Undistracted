@@ -97,8 +97,8 @@ function runContentScript() {
       `;
       }
       
-      // Hide navigation
-      if (tiktokSettings.navigation.value) {
+      // Hide left navigation
+      if (tiktokSettings.leftNavigation.value) {
         css += `
         div[class*='-DivHeaderWrapperMain'] a[data-e2e="tiktok-logo"] {
             display: none !important;
@@ -109,54 +109,16 @@ function runContentScript() {
       `;
       }
       
-      // Hide search
-      if (tiktokSettings.search.value) {
+      // Hide top navigation
+      if (tiktokSettings.topNavigation.value) {
         css += `
         div[class*='-DivHeaderCenterContainer'] div[class^='tiktok-'][class*='-DivSearchFormContainer'] {
             display: none !important;
         }
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivUploadContainer'] {
+        div[class*='-DivHeaderRightContainer'] {
             display: none !important;
         }
             `;
-      }
-
-      // Hide Direct Messages
-      if (tiktokSettings.directMessage.value) {
-        css += `
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivMessageIconContainer'] {
-            display: none !important;
-        }
-            `;
-      }
-
-      // Remove notifications
-      if (tiktokSettings.notifications.value) {
-        css += `
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivHeaderInboxContainer'] {
-            display: none !important;
-        }
-      `;
-      }
-      // Remove account
-      if (tiktokSettings.account.value) {
-        css += `
-        div[class*='-DivHeaderRightContainer'] div[class^='tiktok-'][class*='-DivProfileContainer'] {
-            display: none !important;
-        }
-      `;
-      }
-
-      // Hide footer
-      if (tiktokSettings.footer.value) {
-        css += `
-        div[class^='tiktok-'][class*='-DivFooterContainer'] {
-          display: none !important;
-      }
-      div[class*='-DivBodyContainer'] div[class^='tiktok-'][class*='-DivMainContainer'] div[class*='-DivBottomContainer'] {
-        display: none !important;
-    }
-      `;
       }
 
       var style = document.createElement('style');

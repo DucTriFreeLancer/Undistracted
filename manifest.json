@@ -11,31 +11,38 @@
    "content_scripts": [
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-facebook.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.facebook.com/*" ]
    }, 
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-youtube.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.youtube.com/*"  ]
    },
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-tiktok.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.tiktok.com/*"  ]
    },
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-instagram.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.instagram.com/*"  ]
    },
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-reddit.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.reddit.com/*"  ]
    },
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-twitter.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.twitter.com/*","*://*.twimg.com/*","*://*.twttr.net/*" ,"*://*.twttr.com/*",
       "*://*.abs.twimg.com/*" ]
    },
    {
       "js": [ "/assets/js/jquery.min.js","/assets/js/undistracted-netflix.js"],
+      "run_at":"document_start",
       "matches": [ "*://*.netflix.com/*" ]
    }],
    "description": "Allow users to toggle CSS elements of popular websites on and off to eliminate distractions while they work",

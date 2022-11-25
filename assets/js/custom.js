@@ -212,7 +212,7 @@ function SetToggleElement(keyElem,filterCategory, settingsEle){
 				else if(settingsEle[filterKey].type==="button-list"){
 					elehtml +=`
 					<li class="ant-list-item filterListItem" style="padding: 0px;">
-						<div style="width: 100%; display: flex;">
+						<div style="width: 96%; display: flex;">
 					`		
 					
 					settingsEle[filterKey].buttonList.forEach((button)=>{

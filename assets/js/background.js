@@ -166,10 +166,10 @@ const allSettings = {
       type: 'switch',
       color:"dark"
     },
-    navigation: {
+    leftNavigation: {
       value: false,
-      description: 'Hide Navigation',
-      tooltip: 'Hides Navigation',
+      description: 'Hide Left Navigation',
+      tooltip: 'Hide Left Navigation',
       order: 5,
       type: 'switch',
       color:"dark"
@@ -182,38 +182,14 @@ const allSettings = {
       type: 'switch',
       color:"dark"
     },
-    search: {
+    topNavigation: {
       value: false,
-      description: 'Hide Search',
+      description: 'Hide Top Navigation',
       tooltip: 'Hides Search',
       order: 7,
       type: 'switch',
       color:"dark"
     },
-    directMessage: {
-      value: false,
-      description: 'Hide Direct Messages',
-      tooltip: 'Hides Direct Messages',
-      order: 8,
-      type: 'switch',
-      color:"dark"
-    },
-    notifications: {
-      value: false,
-      description: 'Hide Notifications',
-      tooltip: 'Hide Notifications',
-      order: 9,
-      type: 'switch',
-      color:"dark"
-    },
-    account: {
-      value: false,
-      description: 'Hide Account',
-      tooltip: 'Hide Account',
-      order: 10,
-      type: 'switch',
-      color:"dark"
-    }
   },
   instagramSettings: {
     blockSite: {
@@ -494,7 +470,7 @@ const allSettings = {
     },
     customSitesToBlock: {
       value: { active: false, customURLList: [] },
-      description: 'Block List',
+      description: 'Block Custom List',
       tooltip: '',
       type: 'text-list',
       order: 4,
@@ -517,15 +493,15 @@ const allSettings = {
         {
           title: 'Leave Rating',
           action: 'redirect',
-          icon: 'star',
+          icon: 'comments',
           iconColor: '#01b1f1',
           to:
             "https://chrome.google.com/webstore/detail/"+chrome.runtime.id+'/reviews',
         },
         {
-          title: 'Suggest Feature Or Report Bug',
+          title: 'Suggest Feature / Report Bug',
           action: 'mail',
-          icon: 'plus-circle',
+          icon: 'flag',
           iconColor: '#52c41a',
           to:
             'hanskang@hotmail.ca?subject=Suggest Feature Or Report Bug&body=Description: ',
@@ -533,6 +509,7 @@ const allSettings = {
       ],
       type: 'button-list',
       order: 6,
+      enabled: true
     },
     donate: {
       value: false,
@@ -542,7 +519,7 @@ const allSettings = {
       link:
         '<style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 15px 7px 10px !important;line-height: 35px !important;height:51px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#5F7FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 15px 7px 10px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:\'Cookie\', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://paypal.me/hanskang1?country.x=CA&locale.x=en_US"><img src="https://res.cloudinary.com/dxmi9d3vj/image/upload/v1594642510/book_dfhgvh.svg" alt="Buy me a book"><span style="margin-left:5px;font-size:28px !important;">Buy me a book</span></a>',
       order: 7,
-      enabled: false
+      enabled: true
     },
   },
 };
